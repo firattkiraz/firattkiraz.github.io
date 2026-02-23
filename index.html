@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,20 +7,20 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Clean + premium font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #0b0f18;          /* siyaha yakın */
-      --panel: #0f1522;       /* kart zemini */
-      --line: rgba(255,255,255,0.10);
-      --text: rgba(255,255,255,0.92);
-      --muted: rgba(255,255,255,0.65);
+      --bg: #ffffff;
+      --text: #0b1220;
+      --muted: rgba(11,18,32,0.70);
+      --line: rgba(11,18,32,0.10);
 
-      /* Parlament mavisi */
+      /* Parlement navy-ish */
       --accent: #1b4fa3;
       --accent2:#0f3b82;
+
+      --card: rgba(11,18,32,0.03);
     }
 
     *{ box-sizing:border-box; }
@@ -28,17 +28,14 @@
     body{
       margin:0;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(1200px 800px at 15% 10%, rgba(27,79,163,0.22), transparent 55%),
-        radial-gradient(900px 600px at 85% 15%, rgba(15,59,130,0.18), transparent 60%),
-        linear-gradient(180deg, #070a12, var(--bg) 70%);
+      background: var(--bg);
       color: var(--text);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
     a{ color:inherit; text-decoration:none; }
-    a:hover{ color:#fff; }
+    a:hover{ color: var(--accent2); }
 
     .container{
       width:min(1100px, calc(100% - 48px));
@@ -50,8 +47,8 @@
       position: sticky;
       top:0;
       z-index: 20;
+      background: rgba(255,255,255,0.85);
       backdrop-filter: blur(10px);
-      background: rgba(11,15,24,0.55);
       border-bottom:1px solid var(--line);
     }
 
@@ -71,18 +68,11 @@
       letter-spacing:-0.02em;
     }
 
-    /* “F” monogram logo */
-    .monogram{
-      width: 30px;
-      height: 30px;
-      border-radius: 11px;
-      display:grid;
-      place-items:center;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: linear-gradient(135deg, rgba(27,79,163,0.95), rgba(15,59,130,0.75));
-      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-      font-weight: 900;
-      letter-spacing: -0.03em;
+    .brand-mark{
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
+      display:block;
     }
 
     .nav{
@@ -95,7 +85,7 @@
 
     .nav a{
       font-size: 14px;
-      color: var(--muted);
+      color: rgba(11,18,32,0.70);
       padding: 8px 10px;
       border-radius: 10px;
       border: 1px solid transparent;
@@ -103,67 +93,40 @@
     .nav a:hover{
       color: var(--text);
       border-color: var(--line);
-      background: rgba(255,255,255,0.03);
+      background: rgba(11,18,32,0.03);
     }
 
     /* Hero */
     .hero{
-      padding: 68px 0 18px;
+      padding: 78px 0 22px;
+      text-align: center;
     }
 
-    .hero-card{
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
-      border-radius: 18px;
-      padding: 34px;
-      box-shadow: 0 18px 60px rgba(0,0,0,0.35);
-      position: relative;
-      overflow:hidden;
-    }
-    .hero-card::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background:
-        radial-gradient(650px 260px at 12% 12%, rgba(27,79,163,0.22), transparent 55%),
-        radial-gradient(520px 260px at 88% 0%, rgba(15,59,130,0.20), transparent 60%);
-      pointer-events:none;
-    }
-    .hero-card > *{ position:relative; }
-
-    .kicker{
-      font-size: 12px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.70);
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      margin-bottom: 12px;
-    }
-    .kicker .dot{
-      width:8px;height:8px;border-radius:999px;
-      background: var(--accent);
-      box-shadow: 0 0 0 4px rgba(27,79,163,0.18);
+    .hero-logo{
+      width: 240px;            /* ~4x “küçük logo” hissi */
+      height: auto;
+      display:block;
+      margin: 0 auto 18px;
+      object-fit: contain;
     }
 
     h1{
       margin: 0 0 10px;
-      font-size: clamp(34px, 4.2vw, 54px);
+      font-size: clamp(34px, 4.6vw, 56px);
       line-height: 1.05;
       letter-spacing: -0.03em;
     }
 
     .sub{
-      margin:0;
+      margin:0 auto;
       color: var(--muted);
       font-size: 16px;
-      line-height: 1.65;
-      max-width: 70ch;
+      line-height: 1.7;
+      max-width: 72ch;
     }
 
     .section{
-      padding: 18px 0;
+      padding: 26px 0;
     }
 
     .section-title{
@@ -171,7 +134,7 @@
       align-items: baseline;
       justify-content: space-between;
       gap: 12px;
-      margin: 26px 0 14px;
+      margin: 14px 0 14px;
     }
 
     .section-title h2{
@@ -186,10 +149,10 @@
       font-size: 13px;
     }
 
-    /* Games block (Peak vibe: simple, product-like) */
+    /* Games block (clean product row) */
     .game-row{
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
+      background: var(--card);
       border-radius: 18px;
       padding: 18px;
       display:flex;
@@ -210,8 +173,8 @@
       width: 64px;
       height: 64px;
       border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.6);
       object-fit: cover;
     }
 
@@ -242,34 +205,35 @@
       padding: 12px 14px;
       border-radius: 12px;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
+      background: rgba(255,255,255,0.7);
       color: var(--text);
       font-weight: 700;
       font-size: 14px;
     }
 
     .btn:hover{
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(255,255,255,0.16);
+      border-color: rgba(11,18,32,0.18);
+      background: rgba(11,18,32,0.03);
     }
 
     .btn-primary{
-      border-color: rgba(27,79,163,0.55);
-      background: linear-gradient(135deg, rgba(27,79,163,0.92), rgba(15,59,130,0.86));
-      box-shadow: 0 12px 40px rgba(27,79,163,0.16);
+      border-color: rgba(27,79,163,0.45);
+      background: linear-gradient(135deg, rgba(27,79,163,0.95), rgba(15,59,130,0.95));
+      color: #fff;
     }
+    .btn-primary:hover{ filter: brightness(1.03); }
 
-    /* About text */
-    .about-card{
+    /* About/Contact cards */
+    .card{
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
+      background: var(--card);
       border-radius: 18px;
       padding: 18px;
       color: var(--muted);
       line-height: 1.75;
       font-size: 15px;
     }
-    .about-card strong{ color: var(--text); }
+    .card strong{ color: var(--text); }
 
     .footer{
       border-top: 1px solid var(--line);
@@ -283,13 +247,13 @@
       gap: 12px;
       flex-wrap: wrap;
     }
-    .footer a{ color: rgba(255,255,255,0.78); }
-    .footer a:hover{ color:#fff; }
+    .footer a{ color: rgba(11,18,32,0.75); }
+    .footer a:hover{ color: var(--accent2); }
 
     @media (max-width: 720px){
-      .hero-card{ padding: 24px; }
-      .game-row{ padding: 16px; }
       .container{ width: calc(100% - 32px); }
+      .hero{ padding-top: 58px; }
+      .hero-logo{ width: 210px; }
     }
   </style>
 </head>
@@ -299,7 +263,7 @@
     <div class="container topbar-inner">
       <!-- Brand (click => home) -->
       <a class="brand" href="#home" aria-label="Go to home">
-        <span class="monogram">F</span>
+        <img class="brand-mark" src="assets/brand/fatha-f.png" alt="Fatha Games mark">
         <span>Fatha Games</span>
       </a>
 
@@ -313,13 +277,14 @@
 
   <main class="container" id="home">
     <section class="hero">
-      <div class="hero-card">
-        <div class="kicker"><span class="dot"></span> Game Development</div>
-        <h1>Fatha Games</h1>
-        <p class="sub">
-          A game studio focused on building refined, engaging experiences — with attention to detail, strong execution, and consistent iteration.
-        </p>
-      </div>
+      <!-- Big centered logo (4x feel) -->
+      <img class="hero-logo" src="assets/brand/fatha-f.png" alt="Fatha Games Logo">
+
+      <h1>Fatha Games</h1>
+      <p class="sub">
+        We build games with a strong focus on feel, clarity, and execution — iterating fast, improving constantly,
+        and aiming to deliver experiences people genuinely enjoy.
+      </p>
     </section>
 
     <section class="section" id="games">
@@ -330,7 +295,6 @@
 
       <div class="game-row">
         <div class="game-left">
-          <!-- Perfect Fit logo (upload to: assets/games/perfect-fit/logo.png) -->
           <img class="game-logo" src="assets/games/perfect-fit/logo.png" alt="Perfect Fit Logo">
           <div>
             <p class="game-name">Perfect Fit</p>
@@ -339,7 +303,7 @@
         </div>
 
         <div class="actions">
-          <!-- Put your store link here when ready -->
+          <!-- Replace # with your store link -->
           <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Google Play</a>
           <a class="btn" href="mailto:info@fathagames.com">Support</a>
         </div>
@@ -352,14 +316,15 @@
         <p>Who we are</p>
       </div>
 
-      <div class="about-card">
+      <div class="card">
         <p>
-          <strong>Fatha Games</strong> was founded in <strong>2026</strong> with a clear goal: to create games that feel satisfying to play,
-          polished in presentation, and memorable in design.
+          Fatha Games was founded in <strong>2026</strong> with one simple belief: great games come from persistence,
+          taste, and relentless iteration.
         </p>
         <p>
-          We work with <strong>discipline, persistence, and ambition</strong> — iterating quickly, learning constantly, and pushing quality forward.
-          Our focus is simple: <strong>build great games</strong> and keep raising the bar with every release.
+          We approach development with <strong>ambition</strong> and <strong>discipline</strong> — polishing the small details,
+          learning from every release, and steadily raising the bar. Our goal is to create games that feel satisfying,
+          look clean, and keep players coming back.
         </p>
       </div>
     </section>
@@ -370,10 +335,8 @@
         <p>Business inquiries</p>
       </div>
 
-      <div class="about-card">
-        <p>
-          Email: <a href="mailto:info@fathagames.com"><strong>info@fathagames.com</strong></a>
-        </p>
+      <div class="card">
+        Email: <a href="mailto:info@fathagames.com"><strong>info@fathagames.com</strong></a>
       </div>
     </section>
 
