@@ -58,22 +58,33 @@ a{text-decoration:none;color:inherit;}
   height:26px;
 }
 
+.nav{
+  display:flex;
+  gap:20px;
+  font-size:14px;
+  color:var(--muted);
+}
+
+.nav a:hover{
+  color:var(--text);
+}
+
 /* HERO */
 .hero{
   text-align:center;
-  padding:50px 0 25px;   /* yukarı çekildi */
+  padding:60px 0 40px;
 }
 
 .hero-logo{
-  width:380px;
+  width:360px;
   max-width:90%;
-  display:block;
   margin:0 auto 15px;
+  display:block;
 }
 
 .hero h1{
-  font-size:46px;
-  margin:0 0 8px;
+  font-size:44px;
+  margin:0 0 10px;
 }
 
 .hero p{
@@ -84,26 +95,13 @@ a{text-decoration:none;color:inherit;}
   line-height:1.7;
 }
 
-/* SECTION */
-.section{
-  text-align:center;
-  padding:70px 0;
-}
-
-/* HEADINGS unified */
-.section h2{
-  font-size:42px;
-  margin-bottom:40px;
-  letter-spacing:-0.02em;
-}
-
 /* DIVIDER */
 .divider{
   display:flex;
   align-items:center;
   justify-content:center;
   gap:20px;
-  margin:20px 0 0;
+  margin:40px 0;
 }
 
 .divider-line{
@@ -113,14 +111,31 @@ a{text-decoration:none;color:inherit;}
 }
 
 .divider img{
-  width:26px;
+  width:24px;
   opacity:0.6;
+}
+
+/* SECTION */
+.section{
+  text-align:center;
+  padding:40px 0;
+}
+
+.section-inner{
+  max-width:800px;
+  margin:0 auto;
+}
+
+.section h2{
+  font-size:40px;
+  margin-bottom:35px;
+  letter-spacing:-0.02em;
 }
 
 /* GAME */
 .game-title{
   font-size:28px;
-  margin-bottom:20px;
+  margin-bottom:18px;
 }
 
 .game-logo{
@@ -145,10 +160,8 @@ a{text-decoration:none;color:inherit;}
   cursor:pointer;
 }
 
-/* ABOUT TEXT */
+/* ABOUT */
 .about-text{
-  max-width:750px;
-  margin:0 auto;
   line-height:1.9;
   font-size:17px;
   color:var(--muted);
@@ -172,7 +185,7 @@ a{text-decoration:none;color:inherit;}
 }
 
 @media(max-width:768px){
-  .hero-logo{width:300px;}
+  .hero-logo{width:280px;}
   .section h2{font-size:32px;}
   .footer{flex-direction:column;text-align:center;gap:10px;}
 }
@@ -187,6 +200,11 @@ a{text-decoration:none;color:inherit;}
 <img src="assets/brand/fatha-f.png">
 <span>Fatha Games</span>
 </a>
+<nav class="nav">
+<a href="#games">Games</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</nav>
 </div>
 </header>
 
@@ -196,30 +214,33 @@ a{text-decoration:none;color:inherit;}
 <img class="hero-logo" src="assets/brand/fatha-f.png">
 <h1>Fatha Games</h1>
 <p>We build games with a strong focus on feel, clarity, and execution.</p>
+</section>
 
 <div class="divider">
 <div class="divider-line"></div>
 <img src="assets/brand/fatha-f.png">
 <div class="divider-line"></div>
 </div>
-</section>
 
 <section class="section" id="games">
+<div class="section-inner">
 <h2>Games</h2>
 
 <div class="game-title">Perfect Fit</div>
 <img class="game-logo" src="assets/games/perfect-fit/logo.png">
 <div class="game-meta">Android • Casual / Puzzle</div>
 <a class="btn" href="#">Google Play</a>
+</div>
+</section>
 
 <div class="divider">
 <div class="divider-line"></div>
 <img src="assets/brand/fatha-f.png">
 <div class="divider-line"></div>
 </div>
-</section>
 
 <section class="section" id="about">
+<div class="section-inner">
 <h2>About</h2>
 
 <div class="about-text">
@@ -227,21 +248,22 @@ Fatha Games was founded in 2026 with one simple belief: great games come from pe
 
 We approach development with ambition and discipline. Polishing the small details, learning from every release, and steadily raising the bar. Our goal is to create games that feel satisfying and very enjoyable.
 </div>
+</div>
+</section>
 
 <div class="divider">
 <div class="divider-line"></div>
 <img src="assets/brand/fatha-f.png">
 <div class="divider-line"></div>
 </div>
-</section>
 
 <section class="section" id="contact">
+<div class="section-inner">
 <h2>Contact</h2>
-
 <div class="contact-box">
 info@fathagames.com
 </div>
-
+</div>
 </section>
 
 <footer class="footer">
