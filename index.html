@@ -5,8 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Fatha Games</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="assets/brand/favicon.png">
+
 <style>
 :root{
   --bg:#ffffff;
@@ -73,7 +74,7 @@ a{text-decoration:none;color:inherit;}
 }
 
 .hero-logo{
-  width:420px;        /* 4x büyüklük */
+  width:420px;
   max-width:90%;
   display:block;
   margin:0 auto 30px;
@@ -95,78 +96,85 @@ a{text-decoration:none;color:inherit;}
 
 /* SECTIONS */
 .section{
-  padding:60px 0;
-}
-
-.section h2{
-  font-size:18px;
-  margin-bottom:24px;
-}
-
-/* GAME BLOCK */
-.game-block{
+  padding:80px 0;
   text-align:center;
 }
 
+.section h2{
+  font-size:40px;
+  margin-bottom:40px;
+  letter-spacing:-0.02em;
+}
+
+/* GAME */
+.game-title{
+  font-size:30px;
+  font-weight:700;
+  margin-bottom:25px;
+  letter-spacing:-0.02em;
+}
+
 .game-logo{
-  width:260px;   /* Perfect Fit büyük */
+  width:300px;
   max-width:90%;
   display:block;
-  margin:0 auto 18px;
+  margin:0 auto 25px;
 }
 
 .game-meta{
   color:var(--muted);
-  font-size:14px;
-  margin-bottom:20px;
+  font-size:15px;
+  margin-bottom:25px;
 }
 
 .btn{
-  padding:12px 20px;
+  padding:14px 28px;
   border-radius:10px;
-  border:1px solid var(--line);
-  background:#fff;
   font-weight:600;
-  font-size:14px;
-}
-
-.btn-primary{
+  font-size:15px;
+  border:none;
   background:var(--accent);
   color:#fff;
-  border:none;
+  cursor:pointer;
 }
 
-/* ABOUT */
+.btn:hover{
+  opacity:0.9;
+}
+
+/* ABOUT TEXT */
 .about-text{
   max-width:760px;
   margin:0 auto;
-  line-height:1.8;
-  font-size:16px;
+  line-height:1.9;
+  font-size:17px;
   color:var(--muted);
 }
 
 /* CONTACT */
 .contact-box{
-  text-align:center;
-  font-size:16px;
+  font-size:17px;
+  color:var(--muted);
 }
 
+/* FOOTER */
 .footer{
   border-top:1px solid var(--line);
-  padding:30px 0;
+  padding:40px 0;
   margin-top:60px;
-  font-size:13px;
+  font-size:14px;
   color:var(--muted);
   display:flex;
   justify-content:space-between;
 }
 
-/* MOBİL */
 @media(max-width:768px){
   .hero{padding:70px 0 40px;}
   .hero h1{font-size:36px;}
   .hero-logo{width:320px;}
-  .game-logo{width:200px;}
+  .section h2{font-size:30px;}
+  .game-title{font-size:24px;}
+  .game-logo{width:220px;}
   .footer{flex-direction:column;gap:10px;text-align:center;}
 }
 </style>
@@ -193,36 +201,39 @@ a{text-decoration:none;color:inherit;}
 <section class="hero">
 <img class="hero-logo" src="assets/brand/fatha-f.png" alt="Fatha Games Logo">
 <h1>Fatha Games</h1>
-<p>
-We build games with a strong focus on feel, clarity, and execution.
-</p>
+<p>We build games with a strong focus on feel, clarity, and execution.</p>
 </section>
 
 <section class="section" id="games">
 <h2>Games</h2>
 
-<div class="game-block">
-<img class="game-logo" src="assets/games/perfect-fit/logo.png" alt="Perfect Fit Logo">
-<div class="game-meta">Android • Casual / Puzzle</div>
-<a class="btn btn-primary" href="#" target="_blank">Google Play</a>
-</div>
+<div class="game-title">Perfect Fit</div>
 
+<img class="game-logo" src="assets/games/perfect-fit/logo.png" alt="Perfect Fit Logo">
+
+<div class="game-meta">Android • Casual / Puzzle</div>
+
+<a class="btn" href="#" target="_blank">Google Play</a>
 </section>
 
 <section class="section" id="about">
 <h2>About</h2>
+
 <div class="about-text">
 Fatha Games was founded in 2026 with one simple belief: great games come from persistence, taste, and relentless iteration.
 
 We approach development with ambition and discipline. Polishing the small details, learning from every release, and steadily raising the bar. Our goal is to create games that feel satisfying and very enjoyable.
 </div>
+
 </section>
 
 <section class="section" id="contact">
 <h2>Contact</h2>
+
 <div class="contact-box">
 info@fathagames.com
 </div>
+
 </section>
 
 <footer class="footer">
