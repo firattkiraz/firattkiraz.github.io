@@ -1,62 +1,415 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fatha Games</title>
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0d0d0d;
-    color: white;
-    text-align: center;
-}
-.hero {
-    padding: 120px 20px;
-}
-h1 {
-    font-size: 52px;
-    margin: 0;
-}
-p {
-    font-size: 18px;
-    opacity: 0.7;
-}
-.section {
-    padding: 60px 20px;
-}
-a {
-    color: white;
-    text-decoration: none;
-    border-bottom: 1px solid white;
-}
-a:hover {
-    opacity: 0.7;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fatha Games</title>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #07090d;
+      --panel: rgba(255,255,255,0.04);
+      --panel-2: rgba(255,255,255,0.06);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.65);
+      --line: rgba(255,255,255,0.10);
+
+      /* Parlement navy (approx) */
+      --navy: #0b2a5b;
+      --navy-2: #0f3b82;
+      --accent: #1b4fa3; /* used for highlights */
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 20% 10%, rgba(27,79,163,0.22), transparent 55%),
+                  radial-gradient(900px 500px at 85% 15%, rgba(11,42,91,0.22), transparent 60%),
+                  linear-gradient(180deg, #05060a, var(--bg) 60%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: var(--text); text-decoration: none; }
+    a:hover { color: #fff; }
+
+    .container{
+      width: min(1080px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(7,9,13,0.55);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+    }
+    .brand{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: 0.2px;
+      font-weight: 600;
+    }
+    .mark{
+      width: 28px;
+      height: 28px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, rgba(27,79,163,0.95), rgba(11,42,91,0.95));
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+    }
+    .nav{
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .nav a{
+      color: var(--muted);
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+    }
+    .nav a:hover{
+      color: var(--text);
+      border-color: var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .hero{
+      padding: 74px 0 34px;
+    }
+    .hero-grid{
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .hero-card{
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      border-radius: 18px;
+      padding: 34px;
+      box-shadow: 0 18px 60px rgba(0,0,0,0.35);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::before{
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: radial-gradient(550px 220px at 12% 12%, rgba(27,79,163,0.22), transparent 55%),
+                  radial-gradient(420px 220px at 85% 0%, rgba(11,42,91,0.20), transparent 60%);
+      pointer-events: none;
+    }
+    .hero-card > *{ position: relative; }
+
+    .kicker{
+      font-size: 13px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.70);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .kicker .dot{
+      width: 8px; height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(27,79,163,0.18);
+    }
+
+    h1{
+      font-size: clamp(36px, 4.2vw, 52px);
+      margin: 0 0 10px;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+    .sub{
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 58ch;
+      margin: 0 0 20px;
+    }
+    .cta-row{
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .btn:hover{
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.16);
+    }
+    .btn-primary{
+      border-color: rgba(27,79,163,0.55);
+      background: linear-gradient(135deg, rgba(27,79,163,0.9), rgba(11,42,91,0.9));
+      box-shadow: 0 12px 40px rgba(27,79,163,0.16);
+    }
+    .btn-primary:hover{
+      filter: brightness(1.05);
+      border-color: rgba(27,79,163,0.75);
+    }
+
+    .side-card{
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      border-radius: 18px;
+      padding: 22px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .side-title{
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .side-item{
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .side-item b{ color: var(--text); }
+
+    .section{
+      padding: 26px 0;
+    }
+    .section-title{
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 26px 0 14px;
+    }
+    .section-title h2{
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+    .section-title p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .card{
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      border-radius: 16px;
+      padding: 18px;
+      min-height: 130px;
+    }
+    .card h3{
+      margin: 0 0 8px;
+      font-size: 15px;
+      letter-spacing: -0.01em;
+    }
+    .card p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .badge{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+      color: rgba(255,255,255,0.80);
+      font-size: 12px;
+      margin-top: 12px;
+    }
+    .badge .spark{
+      width: 7px; height: 7px; border-radius: 999px;
+      background: rgba(27,79,163,0.95);
+    }
+
+    .footer{
+      border-top: 1px solid var(--line);
+      margin-top: 34px;
+      padding: 18px 0 30px;
+      color: var(--muted);
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 880px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .grid{ grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="hero">
-    <h1>Fatha Games</h1>
-    <p>Independent Game Studio</p>
-</div>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="mark" aria-hidden="true"></div>
+        <div>Fatha Games</div>
+      </div>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<div class="section">
-    <h2>About</h2>
-    <p>We create immersive and engaging game experiences.</p>
-</div>
+  <main class="container">
 
-<div class="section">
-    <h2>Games</h2>
-    <p>Coming soon.</p>
-</div>
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <div class="kicker"><span class="dot"></span> Game Development Studio</div>
+          <h1>Fatha Games</h1>
+          <p class="sub">
+            We build polished interactive experiences with a focus on clean design, responsive gameplay, and production-ready execution.
+          </p>
 
-<div class="section">
-    <h2>Contact</h2>
-    <p><a href="mailto:info@fathagames.com">info@fathagames.com</a></p>
-</div>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn" href="#contact">Contact</a>
+          </div>
+        </div>
 
+        <aside class="side-card">
+          <div class="side-title">Studio Focus</div>
+          <div class="side-item"><b>Platforms:</b> Mobile • PC</div>
+          <div class="side-item"><b>Expertise:</b> Gameplay Systems • UX • Optimization</div>
+          <div class="side-item"><b>Status:</b> Titles in development</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-title">
+        <h2>About</h2>
+        <p>Built for consistency and long-term growth</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Production mindset</h3>
+          <p>Reliable pipelines, measurable milestones, and a focus on shipping quality builds.</p>
+          <div class="badge"><span class="spark"></span> Quality-first</div>
+        </div>
+        <div class="card">
+          <h3>Player-centered</h3>
+          <p>Fast iteration on feel, clarity, and engagement—without sacrificing performance.</p>
+          <div class="badge"><span class="spark"></span> Design + Gameplay</div>
+        </div>
+        <div class="card">
+          <h3>Technical strength</h3>
+          <p>Optimization-driven development with clean, maintainable implementation.</p>
+          <div class="badge"><span class="spark"></span> Performance</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="section-title">
+        <h2>Projects</h2>
+        <p>Selected work and titles in development</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Title #1</h3>
+          <p>Short one-line pitch. Replace this with your game description and store links when ready.</p>
+          <div class="badge"><span class="spark"></span> In development</div>
+        </div>
+        <div class="card">
+          <h3>Title #2</h3>
+          <p>Add a trailer link, screenshots, and platform badges once the page is ready.</p>
+          <div class="badge"><span class="spark"></span> Coming soon</div>
+        </div>
+        <div class="card">
+          <h3>Press Kit</h3>
+          <p>A compact media kit section can be added for publishers and press (logo, factsheet, contact).</p>
+          <div class="badge"><span class="spark"></span> Optional</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>Business inquiries and partnerships</p>
+      </div>
+
+      <div class="card">
+        <h3>Email</h3>
+        <p>
+          <a href="mailto:info@fathagames.com">info@fathagames.com</a>
+          <br />
+          <span style="color: rgba(255,255,255,0.55); font-size: 13px;">
+            We typically reply within 1–2 business days.
+          </span>
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>© <span id="y"></span> Fatha Games. All rights reserved.</div>
+      <div style="display:flex; gap:12px;">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
