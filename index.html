@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,38 +7,37 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Clean + premium font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #07090d;
-      --panel: rgba(255,255,255,0.04);
-      --panel2: rgba(255,255,255,0.06);
-      --text: rgba(255,255,255,0.92);
-      --muted: rgba(255,255,255,0.64);
+      --bg: #0b0f18;          /* siyaha yakın */
+      --panel: #0f1522;       /* kart zemini */
       --line: rgba(255,255,255,0.10);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.65);
 
-      /* Parlament mavisi tonları */
-      --navy: #0b2a5b;
-      --navy2:#0f3b82;
-      --accent:#1b4fa3;
+      /* Parlament mavisi */
+      --accent: #1b4fa3;
+      --accent2:#0f3b82;
     }
 
-    *{ box-sizing: border-box; }
+    *{ box-sizing:border-box; }
     html,body{ height:100%; }
     body{
       margin:0;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text);
       background:
-        radial-gradient(1200px 700px at 18% 10%, rgba(27,79,163,0.22), transparent 55%),
-        radial-gradient(1000px 600px at 85% 15%, rgba(11,42,91,0.22), transparent 60%),
-        linear-gradient(180deg, #05060a, var(--bg) 62%);
+        radial-gradient(1200px 800px at 15% 10%, rgba(27,79,163,0.22), transparent 55%),
+        radial-gradient(900px 600px at 85% 15%, rgba(15,59,130,0.18), transparent 60%),
+        linear-gradient(180deg, #070a12, var(--bg) 70%);
+      color: var(--text);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
-    a{ color: var(--text); text-decoration:none; }
+    a{ color:inherit; text-decoration:none; }
     a:hover{ color:#fff; }
 
     .container{
@@ -50,11 +49,12 @@
     .topbar{
       position: sticky;
       top:0;
-      z-index:20;
+      z-index: 20;
       backdrop-filter: blur(10px);
-      background: rgba(7,9,13,0.55);
+      background: rgba(11,15,24,0.55);
       border-bottom:1px solid var(--line);
     }
+
     .topbar-inner{
       display:flex;
       align-items:center;
@@ -62,32 +62,43 @@
       padding: 14px 0;
       gap: 16px;
     }
+
     .brand{
       display:flex;
       align-items:center;
-      gap:10px;
-      font-weight:700;
-      letter-spacing:-0.01em;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing:-0.02em;
     }
-    .mark{
-      width:28px; height:28px; border-radius:9px;
-      background: linear-gradient(135deg, rgba(27,79,163,0.95), rgba(11,42,91,0.95));
+
+    /* “F” monogram logo */
+    .monogram{
+      width: 30px;
+      height: 30px;
+      border-radius: 11px;
+      display:grid;
+      place-items:center;
       border: 1px solid rgba(255,255,255,0.18);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+      background: linear-gradient(135deg, rgba(27,79,163,0.95), rgba(15,59,130,0.75));
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      font-weight: 900;
+      letter-spacing: -0.03em;
     }
+
     .nav{
       display:flex;
       align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
+      gap: 10px;
+      flex-wrap: wrap;
       justify-content:flex-end;
     }
+
     .nav a{
-      font-size:14px;
+      font-size: 14px;
       color: var(--muted);
       padding: 8px 10px;
       border-radius: 10px;
-      border:1px solid transparent;
+      border: 1px solid transparent;
     }
     .nav a:hover{
       color: var(--text);
@@ -95,38 +106,19 @@
       background: rgba(255,255,255,0.03);
     }
 
-    /* Google Translate container */
-    .translate{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding: 6px 10px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
-      border-radius: 12px;
-      font-size: 13px;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-    #google_translate_element select{
-      background: rgba(0,0,0,0.35);
-      color: var(--text);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 6px 8px;
-      outline: none;
+    /* Hero */
+    .hero{
+      padding: 68px 0 18px;
     }
 
-    /* Hero */
-    .hero{ padding: 72px 0 26px; }
     .hero-card{
-      border:1px solid var(--line);
+      border: 1px solid var(--line);
       background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
       border-radius: 18px;
       padding: 34px;
       box-shadow: 0 18px 60px rgba(0,0,0,0.35);
       position: relative;
-      overflow: hidden;
+      overflow:hidden;
     }
     .hero-card::before{
       content:"";
@@ -134,14 +126,14 @@
       inset:-2px;
       background:
         radial-gradient(650px 260px at 12% 12%, rgba(27,79,163,0.22), transparent 55%),
-        radial-gradient(520px 260px at 88% 0%, rgba(11,42,91,0.20), transparent 60%);
+        radial-gradient(520px 260px at 88% 0%, rgba(15,59,130,0.20), transparent 60%);
       pointer-events:none;
     }
     .hero-card > *{ position:relative; }
 
     .kicker{
-      font-size: 13px;
-      letter-spacing: 0.16em;
+      font-size: 12px;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.70);
       display:inline-flex;
@@ -150,29 +142,99 @@
       margin-bottom: 12px;
     }
     .kicker .dot{
-      width:8px; height:8px; border-radius:999px;
+      width:8px;height:8px;border-radius:999px;
       background: var(--accent);
       box-shadow: 0 0 0 4px rgba(27,79,163,0.18);
     }
+
     h1{
       margin: 0 0 10px;
-      font-size: clamp(36px, 4.2vw, 54px);
-      line-height:1.05;
-      letter-spacing:-0.03em;
+      font-size: clamp(34px, 4.2vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
     }
+
     .sub{
-      margin: 0 0 18px;
+      margin:0;
       color: var(--muted);
+      font-size: 16px;
       line-height: 1.65;
       max-width: 70ch;
-      font-size: 16px;
     }
-    .cta{
+
+    .section{
+      padding: 18px 0;
+    }
+
+    .section-title{
       display:flex;
+      align-items: baseline;
+      justify-content: space-between;
       gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 14px;
+      margin: 26px 0 14px;
     }
+
+    .section-title h2{
+      margin:0;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+
+    .section-title p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Games block (Peak vibe: simple, product-like) */
+    .game-row{
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      border-radius: 18px;
+      padding: 18px;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .game-left{
+      display:flex;
+      align-items:center;
+      gap: 14px;
+      min-width: 260px;
+    }
+
+    .game-logo{
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.03);
+      object-fit: cover;
+    }
+
+    .game-name{
+      margin:0;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      font-size: 18px;
+    }
+
+    .game-meta{
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .actions{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
     .btn{
       display:inline-flex;
       align-items:center;
@@ -184,140 +246,30 @@
       color: var(--text);
       font-weight: 700;
       font-size: 14px;
-      gap: 10px;
     }
+
     .btn:hover{
       background: rgba(255,255,255,0.06);
       border-color: rgba(255,255,255,0.16);
     }
+
     .btn-primary{
       border-color: rgba(27,79,163,0.55);
-      background: linear-gradient(135deg, rgba(27,79,163,0.92), rgba(11,42,91,0.92));
+      background: linear-gradient(135deg, rgba(27,79,163,0.92), rgba(15,59,130,0.86));
       box-shadow: 0 12px 40px rgba(27,79,163,0.16);
     }
-    .btn-primary:hover{ filter: brightness(1.06); }
 
-    /* Sections */
-    .section{ padding: 22px 0; }
-    .section-title{
-      display:flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 12px;
-      margin: 28px 0 14px;
-    }
-    .section-title h2{
-      margin: 0;
-      font-size: 18px;
-      letter-spacing: -0.01em;
-    }
-    .section-title p{
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .grid3{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-    .card{
+    /* About text */
+    .about-card{
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.03);
-      border-radius: 16px;
-      padding: 18px;
-    }
-    .card h3{
-      margin: 0 0 8px;
-      font-size: 15px;
-      letter-spacing: -0.01em;
-    }
-    .card p{
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    /* Game block */
-    .game{
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
       border-radius: 18px;
       padding: 18px;
-    }
-    .game-top{
-      display:flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      flex-wrap: wrap;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--line);
-      margin-bottom: 14px;
-    }
-    .game-brand{
-      display:flex;
-      align-items:center;
-      gap: 12px;
-      min-width: 240px;
-    }
-    .game-logo{
-      width: 56px;
-      height: 56px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(255,255,255,0.03);
-      object-fit: cover;
-    }
-    .game-name{
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      font-size: 18px;
-      margin: 0;
-    }
-    .game-meta{
       color: var(--muted);
-      font-size: 13px;
-      margin: 2px 0 0;
+      line-height: 1.75;
+      font-size: 15px;
     }
-
-    .media-grid{
-      display:grid;
-      grid-template-columns: 1.35fr 0.65fr;
-      gap: 14px;
-      align-items: start;
-    }
-    .video{
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: rgba(255,255,255,0.02);
-      overflow:hidden;
-      aspect-ratio: 16/9;
-    }
-    .video iframe, .video video{
-      width:100%;
-      height:100%;
-      display:block;
-      border:0;
-    }
-    .shots{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-    .shot{
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      overflow:hidden;
-      background: rgba(255,255,255,0.02);
-    }
-    .shot img{
-      width:100%;
-      height:auto;
-      display:block;
-    }
+    .about-card strong{ color: var(--text); }
 
     .footer{
       border-top: 1px solid var(--line);
@@ -331,12 +283,13 @@
       gap: 12px;
       flex-wrap: wrap;
     }
-    .footer a{ color: rgba(255,255,255,0.75); }
+    .footer a{ color: rgba(255,255,255,0.78); }
     .footer a:hover{ color:#fff; }
 
-    @media (max-width: 900px){
-      .grid3{ grid-template-columns: 1fr; }
-      .media-grid{ grid-template-columns: 1fr; }
+    @media (max-width: 720px){
+      .hero-card{ padding: 24px; }
+      .game-row{ padding: 16px; }
+      .container{ width: calc(100% - 32px); }
     }
   </style>
 </head>
@@ -344,34 +297,51 @@
 <body>
   <header class="topbar">
     <div class="container topbar-inner">
-      <div class="brand">
-        <div class="mark" aria-hidden="true"></div>
-        <div>Fatha Games</div>
-      </div>
+      <!-- Brand (click => home) -->
+      <a class="brand" href="#home" aria-label="Go to home">
+        <span class="monogram">F</span>
+        <span>Fatha Games</span>
+      </a>
 
       <nav class="nav">
-        <a href="#about">About</a>
         <a href="#games">Games</a>
+        <a href="#about">About</a>
         <a href="#contact">Contact</a>
-        <div class="translate">
-          <span>Translate:</span>
-          <span id="google_translate_element"></span>
-        </div>
       </nav>
     </div>
   </header>
 
-  <main class="container">
+  <main class="container" id="home">
     <section class="hero">
       <div class="hero-card">
-        <div class="kicker"><span class="dot"></span> Game Development Studio</div>
+        <div class="kicker"><span class="dot"></span> Game Development</div>
         <h1>Fatha Games</h1>
         <p class="sub">
-          We build polished interactive experiences with a focus on responsive gameplay, clean design, and production-ready execution.
+          A game studio focused on building refined, engaging experiences — with attention to detail, strong execution, and consistent iteration.
         </p>
-        <div class="cta">
-          <a class="btn btn-primary" href="#games">View Games</a>
-          <a class="btn" href="#contact">Contact</a>
+      </div>
+    </section>
+
+    <section class="section" id="games">
+      <div class="section-title">
+        <h2>Games</h2>
+        <p>Current release</p>
+      </div>
+
+      <div class="game-row">
+        <div class="game-left">
+          <!-- Perfect Fit logo (upload to: assets/games/perfect-fit/logo.png) -->
+          <img class="game-logo" src="assets/games/perfect-fit/logo.png" alt="Perfect Fit Logo">
+          <div>
+            <p class="game-name">Perfect Fit</p>
+            <p class="game-meta">Android • Casual / Puzzle</p>
+          </div>
+        </div>
+
+        <div class="actions">
+          <!-- Put your store link here when ready -->
+          <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Google Play</a>
+          <a class="btn" href="mailto:info@fathagames.com">Support</a>
         </div>
       </div>
     </section>
@@ -379,96 +349,30 @@
     <section class="section" id="about">
       <div class="section-title">
         <h2>About</h2>
-        <p>Quality-first, performance-aware development</p>
+        <p>Who we are</p>
       </div>
 
-      <div class="grid3">
-        <div class="card">
-          <h3>Production mindset</h3>
-          <p>Reliable pipelines, measurable milestones, and a focus on shipping quality builds.</p>
-        </div>
-        <div class="card">
-          <h3>Player-centered</h3>
-          <p>Fast iteration on feel, clarity, and engagement—without compromising performance.</p>
-        </div>
-        <div class="card">
-          <h3>Technical execution</h3>
-          <p>Optimization-driven development with clean, maintainable implementation.</p>
-        </div>
+      <div class="about-card">
+        <p>
+          <strong>Fatha Games</strong> was founded in <strong>2026</strong> with a clear goal: to create games that feel satisfying to play,
+          polished in presentation, and memorable in design.
+        </p>
+        <p>
+          We work with <strong>discipline, persistence, and ambition</strong> — iterating quickly, learning constantly, and pushing quality forward.
+          Our focus is simple: <strong>build great games</strong> and keep raising the bar with every release.
+        </p>
       </div>
-    </section>
-
-    <section class="section" id="games">
-      <div class="section-title">
-        <h2>Games</h2>
-        <p>Selected work and titles in development</p>
-      </div>
-
-      <!-- PERFECT FIT: media block (logo + 3 screenshots + 1 video) -->
-      <div class="game">
-        <div class="game-top">
-          <div class="game-brand">
-            <!-- Replace with your actual logo path -->
-            <img class="game-logo" src="assets/games/perfect-fit/logo.png" alt="Perfect Fit Logo">
-            <div>
-              <p class="game-name">Perfect Fit</p>
-              <p class="game-meta">Android • Puzzle / Casual</p>
-            </div>
-          </div>
-
-          <!-- Replace # with your Google Play link when ready -->
-          <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Google Play</a>
-            <a class="btn" href="mailto:info@fathagames.com">Support</a>
-          </div>
-        </div>
-
-        <div class="media-grid">
-          <!-- VIDEO: choose one of the two options below -->
-
-          <!-- Option A: YouTube embed (recommended) -->
-          <div class="video">
-            <iframe
-              src="https://www.youtube.com/embed/VIDEO_ID_HERE"
-              title="Perfect Fit Trailer"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
-            </iframe>
-          </div>
-
-          <!-- Option B: Local MP4 (uncomment if you prefer) -->
-          <!--
-          <div class="video">
-            <video controls preload="metadata" poster="assets/games/perfect-fit/cover.jpg">
-              <source src="assets/games/perfect-fit/trailer.mp4" type="video/mp4">
-            </video>
-          </div>
-          -->
-
-          <div class="shots">
-            <div class="shot"><img src="assets/games/perfect-fit/ss1.jpg" alt="Perfect Fit Screenshot 1"></div>
-            <div class="shot"><img src="assets/games/perfect-fit/ss2.jpg" alt="Perfect Fit Screenshot 2"></div>
-            <div class="shot"><img src="assets/games/perfect-fit/ss3.jpg" alt="Perfect Fit Screenshot 3"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Add more games by duplicating the .game block -->
     </section>
 
     <section class="section" id="contact">
       <div class="section-title">
         <h2>Contact</h2>
-        <p>Business inquiries and partnerships</p>
+        <p>Business inquiries</p>
       </div>
 
-      <div class="card">
-        <h3>Email</h3>
+      <div class="about-card">
         <p>
-          <a href="mailto:info@fathagames.com">info@fathagames.com</a><br/>
-          <span style="color: rgba(255,255,255,0.55); font-size: 13px;">
-            We typically reply within 1–2 business days.
-          </span>
+          Email: <a href="mailto:info@fathagames.com"><strong>info@fathagames.com</strong></a>
         </p>
       </div>
     </section>
@@ -484,15 +388,6 @@
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
-
-    // Google Translate widget
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement(
-        { pageLanguage: 'en', includedLanguages: 'en,tr,de,fr,es,pt,ru,ar', autoDisplay: false },
-        'google_translate_element'
-      );
-    }
   </script>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
