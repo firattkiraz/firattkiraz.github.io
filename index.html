@@ -1,356 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fatha Games</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fatha Games</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --bg: #ffffff;
-      --text: #0b1220;
-      --muted: rgba(11,18,32,0.70);
-      --line: rgba(11,18,32,0.10);
+<style>
+:root{
+  --bg:#ffffff;
+  --text:#0e1320;
+  --muted:rgba(14,19,32,0.65);
+  --line:rgba(14,19,32,0.08);
+  --accent:#1b4fa3;
+}
 
-      /* Parlement navy-ish */
-      --accent: #1b4fa3;
-      --accent2:#0f3b82;
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:Inter,system-ui;
+  background:#fff;
+  color:var(--text);
+}
 
-      --card: rgba(11,18,32,0.03);
-    }
+a{text-decoration:none;color:inherit;}
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+.container{
+  width:min(1100px,calc(100% - 48px));
+  margin:0 auto;
+}
 
-    a{ color:inherit; text-decoration:none; }
-    a:hover{ color: var(--accent2); }
+/* NAVBAR */
+.topbar{
+  position:sticky;
+  top:0;
+  background:#fff;
+  border-bottom:1px solid var(--line);
+}
 
-    .container{
-      width:min(1100px, calc(100% - 48px));
-      margin:0 auto;
-    }
+.topbar-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 0;
+}
 
-    /* Topbar */
-    .topbar{
-      position: sticky;
-      top:0;
-      z-index: 20;
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(10px);
-      border-bottom:1px solid var(--line);
-    }
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:700;
+}
 
-    .topbar-inner{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding: 14px 0;
-      gap: 16px;
-    }
+.brand img{
+  width:28px;
+  height:28px;
+  object-fit:contain;
+}
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      font-weight: 800;
-      letter-spacing:-0.02em;
-    }
+.nav{
+  display:flex;
+  gap:18px;
+  font-size:14px;
+  color:var(--muted);
+}
 
-    .brand-mark{
-      width: 26px;
-      height: 26px;
-      object-fit: contain;
-      display:block;
-    }
+/* HERO */
+.hero{
+  text-align:center;
+  padding:100px 0 60px;
+}
 
-    .nav{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content:flex-end;
-    }
+.hero-logo{
+  width:420px;        /* 4x büyüklük */
+  max-width:90%;
+  display:block;
+  margin:0 auto 30px;
+}
 
-    .nav a{
-      font-size: 14px;
-      color: rgba(11,18,32,0.70);
-      padding: 8px 10px;
-      border-radius: 10px;
-      border: 1px solid transparent;
-    }
-    .nav a:hover{
-      color: var(--text);
-      border-color: var(--line);
-      background: rgba(11,18,32,0.03);
-    }
+.hero h1{
+  font-size:48px;
+  margin:0 0 12px;
+  letter-spacing:-0.03em;
+}
 
-    /* Hero */
-    .hero{
-      padding: 78px 0 22px;
-      text-align: center;
-    }
+.hero p{
+  font-size:17px;
+  color:var(--muted);
+  max-width:680px;
+  margin:0 auto;
+  line-height:1.7;
+}
 
-    .hero-logo{
-      width: 240px;            /* ~4x “küçük logo” hissi */
-      height: auto;
-      display:block;
-      margin: 0 auto 18px;
-      object-fit: contain;
-    }
+/* SECTIONS */
+.section{
+  padding:60px 0;
+}
 
-    h1{
-      margin: 0 0 10px;
-      font-size: clamp(34px, 4.6vw, 56px);
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-    }
+.section h2{
+  font-size:18px;
+  margin-bottom:24px;
+}
 
-    .sub{
-      margin:0 auto;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.7;
-      max-width: 72ch;
-    }
+/* GAME BLOCK */
+.game-block{
+  text-align:center;
+}
 
-    .section{
-      padding: 26px 0;
-    }
+.game-logo{
+  width:260px;   /* Perfect Fit büyük */
+  max-width:90%;
+  display:block;
+  margin:0 auto 18px;
+}
 
-    .section-title{
-      display:flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 12px;
-      margin: 14px 0 14px;
-    }
+.game-meta{
+  color:var(--muted);
+  font-size:14px;
+  margin-bottom:20px;
+}
 
-    .section-title h2{
-      margin:0;
-      font-size: 18px;
-      letter-spacing: -0.01em;
-    }
+.btn{
+  padding:12px 20px;
+  border-radius:10px;
+  border:1px solid var(--line);
+  background:#fff;
+  font-weight:600;
+  font-size:14px;
+}
 
-    .section-title p{
-      margin:0;
-      color: var(--muted);
-      font-size: 13px;
-    }
+.btn-primary{
+  background:var(--accent);
+  color:#fff;
+  border:none;
+}
 
-    /* Games block (clean product row) */
-    .game-row{
-      border: 1px solid var(--line);
-      background: var(--card);
-      border-radius: 18px;
-      padding: 18px;
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
+/* ABOUT */
+.about-text{
+  max-width:760px;
+  margin:0 auto;
+  line-height:1.8;
+  font-size:16px;
+  color:var(--muted);
+}
 
-    .game-left{
-      display:flex;
-      align-items:center;
-      gap: 14px;
-      min-width: 260px;
-    }
+/* CONTACT */
+.contact-box{
+  text-align:center;
+  font-size:16px;
+}
 
-    .game-logo{
-      width: 64px;
-      height: 64px;
-      border-radius: 18px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.6);
-      object-fit: cover;
-    }
+.footer{
+  border-top:1px solid var(--line);
+  padding:30px 0;
+  margin-top:60px;
+  font-size:13px;
+  color:var(--muted);
+  display:flex;
+  justify-content:space-between;
+}
 
-    .game-name{
-      margin:0;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      font-size: 18px;
-    }
-
-    .game-meta{
-      margin: 3px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .actions{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: 12px 14px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.7);
-      color: var(--text);
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .btn:hover{
-      border-color: rgba(11,18,32,0.18);
-      background: rgba(11,18,32,0.03);
-    }
-
-    .btn-primary{
-      border-color: rgba(27,79,163,0.45);
-      background: linear-gradient(135deg, rgba(27,79,163,0.95), rgba(15,59,130,0.95));
-      color: #fff;
-    }
-    .btn-primary:hover{ filter: brightness(1.03); }
-
-    /* About/Contact cards */
-    .card{
-      border: 1px solid var(--line);
-      background: var(--card);
-      border-radius: 18px;
-      padding: 18px;
-      color: var(--muted);
-      line-height: 1.75;
-      font-size: 15px;
-    }
-    .card strong{ color: var(--text); }
-
-    .footer{
-      border-top: 1px solid var(--line);
-      margin-top: 34px;
-      padding: 18px 0 30px;
-      color: var(--muted);
-      font-size: 13px;
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .footer a{ color: rgba(11,18,32,0.75); }
-    .footer a:hover{ color: var(--accent2); }
-
-    @media (max-width: 720px){
-      .container{ width: calc(100% - 32px); }
-      .hero{ padding-top: 58px; }
-      .hero-logo{ width: 210px; }
-    }
-  </style>
+/* MOBİL */
+@media(max-width:768px){
+  .hero{padding:70px 0 40px;}
+  .hero h1{font-size:36px;}
+  .hero-logo{width:320px;}
+  .game-logo{width:200px;}
+  .footer{flex-direction:column;gap:10px;text-align:center;}
+}
+</style>
 </head>
 
 <body>
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <!-- Brand (click => home) -->
-      <a class="brand" href="#home" aria-label="Go to home">
-        <img class="brand-mark" src="assets/brand/fatha-f.png" alt="Fatha Games mark">
-        <span>Fatha Games</span>
-      </a>
 
-      <nav class="nav">
-        <a href="#games">Games</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+<header class="topbar">
+<div class="container topbar-inner">
+<a class="brand" href="#home">
+<img src="assets/brand/fatha-f.png" alt="F Logo">
+<span>Fatha Games</span>
+</a>
+<nav class="nav">
+<a href="#games">Games</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</nav>
+</div>
+</header>
 
-  <main class="container" id="home">
-    <section class="hero">
-      <!-- Big centered logo (4x feel) -->
-      <img class="hero-logo" src="assets/brand/fatha-f.png" alt="Fatha Games Logo">
+<main id="home" class="container">
 
-      <h1>Fatha Games</h1>
-      <p class="sub">
-        We build games with a strong focus on feel, clarity, and execution — iterating fast, improving constantly,
-        and aiming to deliver experiences people genuinely enjoy.
-      </p>
-    </section>
+<section class="hero">
+<img class="hero-logo" src="assets/brand/fatha-f.png" alt="Fatha Games Logo">
+<h1>Fatha Games</h1>
+<p>
+We build games with a strong focus on feel, clarity, and execution.
+</p>
+</section>
 
-    <section class="section" id="games">
-      <div class="section-title">
-        <h2>Games</h2>
-        <p>Current release</p>
-      </div>
+<section class="section" id="games">
+<h2>Games</h2>
 
-      <div class="game-row">
-        <div class="game-left">
-          <img class="game-logo" src="assets/games/perfect-fit/logo.png" alt="Perfect Fit Logo">
-          <div>
-            <p class="game-name">Perfect Fit</p>
-            <p class="game-meta">Android • Casual / Puzzle</p>
-          </div>
-        </div>
+<div class="game-block">
+<img class="game-logo" src="assets/games/perfect-fit/logo.png" alt="Perfect Fit Logo">
+<div class="game-meta">Android • Casual / Puzzle</div>
+<a class="btn btn-primary" href="#" target="_blank">Google Play</a>
+</div>
 
-        <div class="actions">
-          <!-- Replace # with your store link -->
-          <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Google Play</a>
-          <a class="btn" href="mailto:info@fathagames.com">Support</a>
-        </div>
-      </div>
-    </section>
+</section>
 
-    <section class="section" id="about">
-      <div class="section-title">
-        <h2>About</h2>
-        <p>Who we are</p>
-      </div>
+<section class="section" id="about">
+<h2>About</h2>
+<div class="about-text">
+Fatha Games was founded in 2026 with one simple belief: great games come from persistence, taste, and relentless iteration.
 
-      <div class="card">
-        <p>
-          Fatha Games was founded in <strong>2026</strong> with one simple belief: great games come from persistence,
-          taste, and relentless iteration.
-        </p>
-        <p>
-          We approach development with <strong>ambition</strong> and <strong>discipline</strong> — polishing the small details,
-          learning from every release, and steadily raising the bar. Our goal is to create games that feel satisfying,
-          look clean, and keep players coming back.
-        </p>
-      </div>
-    </section>
+We approach development with ambition and discipline. Polishing the small details, learning from every release, and steadily raising the bar. Our goal is to create games that feel satisfying and very enjoyable.
+</div>
+</section>
 
-    <section class="section" id="contact">
-      <div class="section-title">
-        <h2>Contact</h2>
-        <p>Business inquiries</p>
-      </div>
+<section class="section" id="contact">
+<h2>Contact</h2>
+<div class="contact-box">
+info@fathagames.com
+</div>
+</section>
 
-      <div class="card">
-        Email: <a href="mailto:info@fathagames.com"><strong>info@fathagames.com</strong></a>
-      </div>
-    </section>
+<footer class="footer">
+<div>© 2026 Fatha Games</div>
+<div>
+<a href="privacy.html">Privacy Policy</a> •
+<a href="terms.html">Terms of Service</a>
+</div>
+</footer>
 
-    <footer class="footer">
-      <div>© <span id="y"></span> Fatha Games. All rights reserved.</div>
-      <div style="display:flex; gap:12px; flex-wrap:wrap;">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-      </div>
-    </footer>
-  </main>
+</main>
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
