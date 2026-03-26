@@ -17,14 +17,18 @@
 }
 
 *{box-sizing:border-box;}
+
 body{
   margin:0;
-  font-family:Inter,system-ui;
+  font-family:Inter,system-ui,sans-serif;
   background:#ffffff;
   color:var(--text);
 }
 
-a{text-decoration:none;color:inherit;}
+a{
+  text-decoration:none;
+  color:inherit;
+}
 
 .container{
   width:min(1100px,calc(100% - 48px));
@@ -37,6 +41,7 @@ a{text-decoration:none;color:inherit;}
   top:0;
   background:#fff;
   border-bottom:1px solid var(--line);
+  z-index:10;
 }
 
 .topbar-inner{
@@ -63,6 +68,10 @@ a{text-decoration:none;color:inherit;}
   gap:20px;
   font-size:14px;
   color:var(--muted);
+}
+
+.nav a{
+  transition:0.2s ease;
 }
 
 .nav a:hover{
@@ -151,6 +160,7 @@ a{text-decoration:none;color:inherit;}
 }
 
 .btn{
+  display:inline-block;
   padding:14px 28px;
   border-radius:10px;
   border:none;
@@ -158,6 +168,12 @@ a{text-decoration:none;color:inherit;}
   color:#fff;
   font-weight:600;
   cursor:pointer;
+  transition:0.25s ease;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px rgba(27,79,163,0.18);
 }
 
 /* ABOUT */
@@ -173,6 +189,65 @@ a{text-decoration:none;color:inherit;}
   color:var(--muted);
 }
 
+.contact-item{
+  margin-bottom:20px;
+  font-weight:500;
+}
+
+.follow-title{
+  font-size:16px;
+  font-weight:600;
+  margin:0 0 15px;
+  color:var(--text);
+}
+
+.socials{
+  display:flex;
+  justify-content:center;
+  gap:22px;
+  flex-wrap:wrap;
+}
+
+.socials a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:46px;
+  height:46px;
+  border-radius:14px;
+  background:rgba(14,19,32,0.04);
+  transition:0.25s ease;
+}
+
+.socials svg{
+  width:20px;
+  height:20px;
+  fill:var(--text);
+  opacity:0.8;
+  transition:0.25s ease;
+}
+
+.socials a:hover{
+  transform:translateY(-3px);
+}
+
+.socials a:hover svg{
+  fill:#fff;
+  opacity:1;
+}
+
+.socials a:nth-child(1):hover{
+  background:#FF0000;
+}
+
+.socials a:nth-child(2):hover{
+  background:#E1306C;
+}
+
+.socials a:nth-child(3):hover{
+  background:#1877F2;
+}
+
 /* FOOTER */
 .footer{
   border-top:1px solid var(--line);
@@ -182,12 +257,29 @@ a{text-decoration:none;color:inherit;}
   color:var(--muted);
   display:flex;
   justify-content:space-between;
+  gap:16px;
+}
+
+.footer a{
+  transition:0.2s ease;
+}
+
+.footer a:hover{
+  color:var(--text);
 }
 
 @media(max-width:768px){
   .hero-logo{width:280px;}
   .section h2{font-size:32px;}
-  .footer{flex-direction:column;text-align:center;gap:10px;}
+  .footer{
+    flex-direction:column;
+    text-align:center;
+    gap:10px;
+  }
+  .topbar-inner{
+    flex-direction:column;
+    gap:12px;
+  }
 }
 </style>
 </head>
@@ -195,86 +287,133 @@ a{text-decoration:none;color:inherit;}
 <body>
 
 <header class="topbar">
-<div class="container topbar-inner">
-<a class="brand" href="#home">
-<img src="assets/brand/fatha-f.png">
-<span>Fatha Games</span>
-</a>
-<nav class="nav">
-<a href="#games">Games</a>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
-</nav>
-</div>
+  <div class="container topbar-inner">
+    <a class="brand" href="#home">
+      <img src="assets/brand/fatha-f.png" alt="Fatha Games logo">
+      <span>Fatha Games</span>
+    </a>
+
+    <nav class="nav">
+      <a href="#games">Games</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
 </header>
 
 <main id="home" class="container">
 
-<section class="hero">
-<img class="hero-logo" src="assets/brand/fatha-f.png">
-<h1>Fatha Games</h1>
-<p>We build games with a strong focus on feel, clarity, and execution.</p>
-</section>
+  <section class="hero">
+    <img class="hero-logo" src="assets/brand/fatha-f.png" alt="Fatha Games">
+    <h1>Fatha Games</h1>
+    <p>We build games with a strong focus on feel, clarity, and execution.</p>
+  </section>
 
-<div class="divider">
-<div class="divider-line"></div>
-<img src="assets/brand/fatha-f.png">
-<div class="divider-line"></div>
-</div>
+  <div class="divider">
+    <div class="divider-line"></div>
+    <img src="assets/brand/fatha-f.png" alt="">
+    <div class="divider-line"></div>
+  </div>
 
-<section class="section" id="games">
-<div class="section-inner">
-<h2>Games</h2>
+  <section class="section" id="games">
+    <div class="section-inner">
+      <h2>Games</h2>
 
-<div class="game-title">Perfect Fit</div>
-<img class="game-logo" src="assets/games/perfect-fit/logo.png">
-<div class="game-meta">Android • Casual / Puzzle</div>
-<a class="btn" href="https://play.google.com/store/apps/details?id=com.FathaGames.PerfectFit" target="_blank">
-  Google Play
-</a>
-</div>
-</section>
+      <div class="game-title">Perfect Fit</div>
+      <img class="game-logo" src="assets/games/perfect-fit/logo.png" alt="Perfect Fit logo">
+      <div class="game-meta">Android • Casual / Puzzle</div>
 
-<div class="divider">
-<div class="divider-line"></div>
-<img src="assets/brand/fatha-f.png">
-<div class="divider-line"></div>
-</div>
+      <a
+        class="btn"
+        href="https://play.google.com/store/apps/details?id=com.FathaGames.PerfectFit"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Google Play
+      </a>
+    </div>
+  </section>
 
-<section class="section" id="about">
-<div class="section-inner">
-<h2>About</h2>
+  <div class="divider">
+    <div class="divider-line"></div>
+    <img src="assets/brand/fatha-f.png" alt="">
+    <div class="divider-line"></div>
+  </div>
 
-<div class="about-text">
-Fatha Games was founded in 2026 with one simple belief: great games come from persistence, taste, and relentless iteration.
+  <section class="section" id="about">
+    <div class="section-inner">
+      <h2>About</h2>
 
-We approach development with ambition and discipline. Polishing the small details, learning from every release, and steadily raising the bar. Our goal is to create games that feel satisfying and very enjoyable.
-</div>
-</div>
-</section>
+      <div class="about-text">
+        Fatha Games was founded in 2026 with one simple belief: great games come from persistence, taste, and relentless iteration.
+        <br><br>
+        We approach development with ambition and discipline. Polishing the small details, learning from every release, and steadily raising the bar. Our goal is to create games that feel satisfying and very enjoyable.
+      </div>
+    </div>
+  </section>
 
-<div class="divider">
-<div class="divider-line"></div>
-<img src="assets/brand/fatha-f.png">
-<div class="divider-line"></div>
-</div>
+  <div class="divider">
+    <div class="divider-line"></div>
+    <img src="assets/brand/fatha-f.png" alt="">
+    <div class="divider-line"></div>
+  </div>
 
-<section class="section" id="contact">
-<div class="section-inner">
-<h2>Contact</h2>
-<div class="contact-box">
-info@fathagames.com
-</div>
-</div>
-</section>
+  <section class="section" id="contact">
+    <div class="section-inner">
+      <h2>Contact</h2>
 
-<footer class="footer">
-<div>© 2026 Fatha Games</div>
-<div>
-<a href="privacy.html">Privacy Policy</a> •
-<a href="terms.html">Terms of Service</a>
-</div>
-</footer>
+      <div class="contact-box">
+        <div class="contact-item">
+          <span>info@fathagames.com</span>
+        </div>
+
+        <h3 class="follow-title">Follow Us</h3>
+
+        <div class="socials">
+          <a
+            href="https://youtube.com/@fathagames?si=OtSNc9xd8tevEvNE"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="YouTube"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.8 15.5v-7l6.2 3.5-6.2 3.5z"/>
+            </svg>
+          </a>
+
+          <a
+            href="https://www.instagram.com/fatha.games?igsh=NGo5Yzh1YnMwOXBq"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm5 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm6.5-.8a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0zM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
+            </svg>
+          </a>
+
+          <a
+            href="https://www.facebook.com/share/1Di7zF4rcD/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-2.9h2.4V9.4c0-2.4 1.4-3.7 3.6-3.7 1 0 2 .2 2 .2v2.3h-1.1c-1.1 0-1.5.7-1.5 1.4v1.7H16l-.4 2.9h-2.2v7A10 10 0 0 0 22 12z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div>© 2026 Fatha Games</div>
+    <div>
+      <a href="privacy.html">Privacy Policy</a> •
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </footer>
 
 </main>
 
