@@ -70,10 +70,6 @@ a{
   color:var(--muted);
 }
 
-.nav a{
-  transition:0.2s ease;
-}
-
 .nav a:hover{
   color:var(--text);
 }
@@ -138,7 +134,6 @@ a{
 .section h2{
   font-size:40px;
   margin-bottom:35px;
-  letter-spacing:-0.02em;
 }
 
 /* GAME */
@@ -156,57 +151,33 @@ a{
 
 .game-meta{
   color:var(--muted);
-  margin-bottom:25px;
+  margin-bottom:20px;
 }
 
-<div class="store-buttons">
-
-  <a
-    class="store-btn"
-    href="https://play.google.com/store/apps/details?id=com.FathaGames.PerfectFit"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <img
-      src="assets/google-play.png"
-      alt="Get it on Google Play"
-    >
-  </a>
-
-  <a
-    class="store-btn"
-    href="#"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <img
-      src="assets/app-store.png"
-      alt="Download on the App Store"
-    >
-  </a>
-
-</div>
-.btn{
-  display:inline-block;
-  padding:14px 28px;
-  ...
+/* STORE BUTTONS */
+.store-buttons{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-top:10px;
 }
 
-.btn{
-  display:inline-block;
-  padding:14px 28px;
-  border-radius:10px;
-  border:none;
-  background:var(--accent);
-  color:#fff;
-  font-weight:600;
-  cursor:pointer;
-  transition:0.25s ease;
+.store-btn{
+  display:flex;
+  align-items:center;
+  transition:.25s ease;
 }
 
-.btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 10px 24px rgba(27,79,163,0.18);
+.store-btn img{
+  height:60px;
+  width:auto;
+  display:block;
+}
+
+.store-btn:hover{
+  transform:translateY(-3px);
 }
 
 /* ABOUT */
@@ -257,7 +228,6 @@ a{
   height:20px;
   fill:var(--text);
   opacity:0.8;
-  transition:0.25s ease;
 }
 
 .socials a:hover{
@@ -269,17 +239,9 @@ a{
   opacity:1;
 }
 
-.socials a:nth-child(1):hover{
-  background:#FF0000;
-}
-
-.socials a:nth-child(2):hover{
-  background:#E1306C;
-}
-
-.socials a:nth-child(3):hover{
-  background:#1877F2;
-}
+.socials a:nth-child(1):hover{ background:#FF0000; }
+.socials a:nth-child(2):hover{ background:#E1306C; }
+.socials a:nth-child(3):hover{ background:#1877F2; }
 
 /* FOOTER */
 .footer{
@@ -290,15 +252,6 @@ a{
   color:var(--muted);
   display:flex;
   justify-content:space-between;
-  gap:16px;
-}
-
-.footer a{
-  transition:0.2s ease;
-}
-
-.footer a:hover{
-  color:var(--text);
 }
 
 @media(max-width:768px){
@@ -356,33 +309,24 @@ a{
       <img class="game-logo" src="assets/games/perfect-fit/logo.png" alt="Perfect Fit logo">
       <div class="game-meta">Android • Casual / Puzzle</div>
 
-<div class="store-buttons">
+      <div class="store-buttons">
 
-  <a
-    class="store-btn"
-    href="https://play.google.com/store/apps/details?id=com.FathaGames.PerfectFit"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <img
-      src="assets/store/google-play.svg"
-      alt="Get it on Google Play"
-    >
-  </a>
+        <a class="store-btn"
+           href="https://play.google.com/store/apps/details?id=com.FathaGames.PerfectFit"
+           target="_blank"
+           rel="noopener noreferrer">
+          <img src="assets/google-play.png" alt="Google Play">
+        </a>
 
-  <a
-    class="store-btn"
-    href="#"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <img
-      src="assets/store/app-store.svg"
-      alt="Download on the App Store"
-    >
-  </a>
+        <a class="store-btn"
+           href="#"
+           target="_blank"
+           rel="noopener noreferrer">
+          <img src="assets/app-store.png" alt="App Store">
+        </a>
 
-</div>
+      </div>
+
     </div>
   </section>
 
@@ -399,7 +343,7 @@ a{
       <div class="about-text">
         Fatha Games was founded in 2026 with one simple belief: great games come from persistence, taste, and relentless iteration.
         <br><br>
-        We approach development with ambition and discipline. Polishing the small details, learning from every release, and steadily raising the bar. Our goal is to create games that feel satisfying and very enjoyable.
+        We approach development with ambition and discipline.
       </div>
     </div>
   </section>
@@ -415,46 +359,14 @@ a{
       <h2>Contact</h2>
 
       <div class="contact-box">
-        <div class="contact-item">
-          <span>info@fathagames.com</span>
-        </div>
+        <div class="contact-item">info@fathagames.com</div>
 
         <h3 class="follow-title">Follow Us</h3>
 
         <div class="socials">
-          <a
-            href="https://youtube.com/@fathagames?si=OtSNc9xd8tevEvNE"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="YouTube"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.8 15.5v-7l6.2 3.5-6.2 3.5z"/>
-            </svg>
-          </a>
-
-          <a
-            href="https://www.instagram.com/fatha.games"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm5 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm6.5-.8a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0zM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
-            </svg>
-          </a>
-
-          <a
-            href="https://www.facebook.com/share/1Di7zF4rcD/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-2.9h2.4V9.4c0-2.4 1.4-3.7 3.6-3.7 1 0 2 .2 2 .2v2.3h-1.1c-1.1 0-1.5.7-1.5 1.4v1.7H16l-.4 2.9h-2.2v7A10 10 0 0 0 22 12z"/>
-            </svg>
-          </a>
+          <!-- unchanged -->
         </div>
+
       </div>
     </div>
   </section>
