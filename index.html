@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-B9GTDBWJPV"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -18,26 +19,37 @@ gtag('config', 'G-B9GTDBWJPV');
 
 <style>
 
+/* RESET */
 *{box-sizing:border-box;}
 
 body{
   margin:0;
-  font-family:Inter;
+  font-family:Inter,system-ui,sans-serif;
   background:#fff;
   color:#0e1320;
 }
+
+a{color:inherit; text-decoration:none;}
 
 .container{
   width:min(1100px,90%);
   margin:auto;
 }
 
-/* NAV */
+/* TOPBAR */
 .topbar{
+  position:sticky;
+  top:0;
+  background:#fff;
+  border-bottom:1px solid rgba(0,0,0,0.08);
+  z-index:10;
+}
+
+.topbar-inner{
   display:flex;
   justify-content:space-between;
-  padding:15px 0;
-  border-bottom:1px solid #eee;
+  align-items:center;
+  padding:14px 0;
 }
 
 .nav{
@@ -50,40 +62,91 @@ body{
 /* HERO */
 .hero{
   text-align:center;
-  padding:50px 0;
+  padding:70px 0 40px;
 }
 
 .hero-logo{
-  width:240px;
-  max-width:80%;
+  width:300px;
+  max-width:85%;
+}
+
+.hero h1{
+  font-size:44px;
+  margin:0;
+}
+
+.hero p{
+  margin-top:10px;
+  color:rgba(0,0,0,0.6);
+}
+
+/* DIVIDER */
+.divider{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  margin:50px 0;
+}
+
+.divider-line{
+  height:1px;
+  flex:1;
+  background:rgba(0,0,0,0.08);
+}
+
+.divider img{
+  width:24px;
+  opacity:.6;
+}
+
+/* SECTION */
+.section{
+  text-align:center;
+  padding:40px 0;
+}
+
+.section h2{
+  font-size:38px;
+  margin-bottom:25px;
 }
 
 /* GAME */
 .game-logo{
-  width:200px;
-  max-width:70%;
+  width:240px;
+  max-width:80%;
+  margin-bottom:15px;
 }
 
-/* STORE */
+/* STORE BUTTONS */
 .store-buttons{
   display:flex;
   justify-content:center;
-  gap:20px;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.store-btn{
+  display:inline-block;
+  transition:transform .25s ease;
+}
+
+.store-btn:hover{
+  transform:translateY(-4px);
 }
 
 .store-btn img{
-  height:48px !important;
+  height:52px !important;
   width:auto !important;
-  max-height:48px !important;
   object-fit:contain;
+  display:block;
 }
 
-/* SOCIAL */
+/* SOCIALS */
 .socials{
   display:flex;
   justify-content:center;
   gap:18px;
-  margin-top:10px;
+  margin-top:15px;
 }
 
 .socials a{
@@ -93,40 +156,51 @@ body{
   align-items:center;
   justify-content:center;
   background:rgba(0,0,0,0.05);
-  border-radius:10px;
+  border-radius:12px;
+  transition:all .25s ease;
 }
 
 .socials svg{
   width:20px;
   height:20px;
   fill:#0e1320;
+  transition:fill .25s ease;
+}
+
+.socials a:hover{
+  transform:translateY(-3px);
+}
+
+.socials a:nth-child(1):hover{ background:#FF0000; }
+.socials a:nth-child(2):hover{ background:#E1306C; }
+.socials a:nth-child(3):hover{ background:#1877F2; }
+
+.socials a:hover svg{
+  fill:#fff;
 }
 
 /* FOOTER */
 .footer{
-  margin-top:40px;
-  padding:25px 0;
-  border-top:1px solid #eee;
+  margin-top:60px;
+  padding:30px 0;
+  border-top:1px solid rgba(0,0,0,0.08);
   display:flex;
   justify-content:space-between;
   font-size:13px;
   opacity:.7;
 }
 
+/* GLOBAL FIX */
 img, svg{
   max-width:100%;
   height:auto;
 }
 
-/* SECTION */
-section{
-  text-align:center;
-  margin-top:40px;
-}
-
 </style>
 
 <script>
+
+/* store tracking */
 function trackStore(type,url){
   gtag('event','click_store',{platform:type});
   window.open(url,'_blank');
@@ -147,35 +221,52 @@ function trackStore(type,url){
 
 <body>
 
-<header class="topbar container">
-  <div><b>Fatha Games</b></div>
-  <nav class="nav">
-    <a href="#games">Games</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<!-- TOP -->
+<header class="topbar">
+  <div class="container topbar-inner">
+    <div><b>Fatha Games</b></div>
+    <nav class="nav">
+      <a href="#games">Games</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
 </header>
 
 <main class="container">
 
+<!-- HERO -->
 <section class="hero">
   <img class="hero-logo" src="assets/brand/fatha-f.png">
   <h1>Fatha Games</h1>
+  <p>We build games with focus on feel, clarity, and execution.</p>
 </section>
 
-<section id="games">
-  <h2>Perfect Fit</h2>
+<!-- DIVIDER -->
+<div class="divider">
+  <div class="divider-line"></div>
+  <img src="assets/brand/fatha-f.png">
+  <div class="divider-line"></div>
+</div>
+
+<!-- GAMES -->
+<section class="section" id="games">
+  <h2>Games</h2>
+
+  <div>Perfect Fit</div>
 
   <img class="game-logo" src="assets/games/perfect-fit/logo.png">
 
   <div class="store-buttons">
 
-    <a href="javascript:void(0)"
+    <a class="store-btn"
+       href="javascript:void(0)"
        onclick="trackStore('android','https://play.google.com/store/apps/details?id=com.FathaGames.PerfectFit')">
       <img src="assets/google-play.png">
     </a>
 
-    <a href="javascript:void(0)"
+    <a class="store-btn"
+       href="javascript:void(0)"
        onclick="trackStore('ios','https://apps.apple.com/us/app/perfect-fit-puzzle/id6772202390')">
       <img src="assets/app-store.png">
     </a>
@@ -183,13 +274,30 @@ function trackStore(type,url){
   </div>
 </section>
 
-<section id="about">
+<!-- DIVIDER -->
+<div class="divider">
+  <div class="divider-line"></div>
+  <img src="assets/brand/fatha-f.png">
+  <div class="divider-line"></div>
+</div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
   <h2>About</h2>
-  <p>We build games with focus on feel and execution.</p>
+  <p style="color:rgba(0,0,0,0.6); line-height:1.8;">
+    We focus on feel, clarity and execution in game development.
+  </p>
 </section>
 
-<section id="contact">
+<!-- DIVIDER -->
+<div class="divider">
+  <div class="divider-line"></div>
+  <img src="assets/brand/fatha-f.png">
+  <div class="divider-line"></div>
+</div>
 
+<!-- CONTACT -->
+<section class="section" id="contact">
   <h2>Contact</h2>
   <p>info@fathagames.com</p>
 
@@ -217,9 +325,9 @@ function trackStore(type,url){
     </a>
 
   </div>
-
 </section>
 
+<!-- FOOTER -->
 <footer class="footer container">
   <div>© 2026 Fatha Games</div>
   <div>
