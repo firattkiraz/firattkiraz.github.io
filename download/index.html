@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -11,13 +12,17 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
+
 fbq('init', '1458890831084544');
 fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1458890831084544&ev=PageView&noscript=1"
-/></noscript>
+
+<noscript>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1458890831084544&ev=PageView&noscript=1"/>
+</noscript>
 <!-- End Meta Pixel Code -->
+
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-B9GTDBWJPV"></script>
 <script>
@@ -55,16 +60,22 @@ window.addEventListener('load', function() {
         destination = "https://www.fathagames.com/#games";
     }
 
-    // Analytics event
+    // 🔥 META PIXEL EVENT (EN ÖNEMLİ EKLEME)
+    fbq('track', 'ViewContent', {
+        content_name: 'qr_redirect',
+        platform: platform
+    });
+
+    // GA event
     gtag('event', 'qr_redirect', {
         platform: platform,
         source: 'qr'
     });
 
-    // Event'in gönderilmesi için kısa bekleme
+    // daha güvenli redirect (pixel kaçmasın diye)
     setTimeout(function() {
         window.location.replace(destination);
-    }, 300);
+    }, 800);
 
 });
 </script>
