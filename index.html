@@ -35,19 +35,23 @@ body{
   color:var(--text);
 }
 
-a{ text-decoration:none; color:inherit; }
+a{
+  text-decoration:none;
+  color:inherit;
+}
 
 .container{
   width:min(1100px,calc(100% - 48px));
   margin:0 auto;
 }
 
-/* NAV */
+/* TOPBAR */
 .topbar{
   position:sticky;
   top:0;
   background:#fff;
   border-bottom:1px solid var(--line);
+  z-index:10;
 }
 
 .topbar-inner{
@@ -64,6 +68,18 @@ a{ text-decoration:none; color:inherit; }
   font-weight:700;
 }
 
+/* NAV */
+.nav{
+  display:flex;
+  gap:20px;
+  font-size:14px;
+  color:var(--muted);
+}
+
+.nav a:hover{
+  color:var(--text);
+}
+
 /* HERO */
 .hero{
   text-align:center;
@@ -71,15 +87,51 @@ a{ text-decoration:none; color:inherit; }
 }
 
 .hero-logo{
-  width:360px;
-  max-width:90%;
+  width:260px;
+  max-width:80%;
 }
 
 .hero h1{
   font-size:44px;
+  margin:10px 0;
 }
 
-/* STORE BUTTONS */
+.hero p{
+  color:var(--muted);
+}
+
+/* DIVIDER */
+.divider{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  margin:40px 0;
+}
+
+.divider-line{
+  height:1px;
+  flex:1;
+  background:var(--line);
+}
+
+/* SECTION */
+.section{
+  text-align:center;
+  padding:40px 0;
+}
+
+.section h2{
+  font-size:38px;
+  margin-bottom:25px;
+}
+
+/* GAME */
+.game-logo{
+  width:220px;
+  max-width:80%;
+}
+
+/* STORE */
 .store-buttons{
   display:flex;
   justify-content:center;
@@ -88,53 +140,65 @@ a{ text-decoration:none; color:inherit; }
 }
 
 .store-btn img{
-  height:60px;
-}
-/* ICON FIX */
-img, svg {
-  max-width: 100%;
-  height: auto;
+  height:52px;
+  width:auto;
 }
 
-.store-btn img {
-  height: 52px;
-  width: auto;
-  object-fit: contain;
+/* ABOUT */
+.about-text{
+  color:var(--muted);
+  line-height:1.8;
 }
 
-.socials svg {
-  width: 20px;
-  height: 20px;
+/* SOCIAL */
+.socials{
+  display:flex;
+  justify-content:center;
+  gap:20px;
 }
+
+.socials svg{
+  width:20px;
+  height:20px;
+}
+
 /* FOOTER */
 .footer{
   border-top:1px solid var(--line);
-  padding:40px 0;
-  text-align:center;
+  padding:30px 0;
+  margin-top:50px;
+  display:flex;
+  justify-content:space-between;
   color:var(--muted);
+  font-size:14px;
+}
+
+/* ICON FIX */
+img, svg{
+  max-width:100%;
+  height:auto;
+}
+
+@media(max-width:768px){
+  .hero h1{font-size:32px;}
+  .footer{flex-direction:column; gap:10px; text-align:center;}
 }
 </style>
 
-<!-- =========================
-GA EVENTS
-========================= -->
+<!-- GA EVENTS -->
 <script>
 function trackStore(platform, url){
-
-  gtag('event', 'click_store', {
-    platform: platform
+  gtag('event','click_store',{
+    platform:platform
   });
-
-  window.open(url, '_blank');
+  window.open(url,'_blank');
 }
 
-/* QR tracking */
 (function(){
-  const params = new URLSearchParams(window.location.search);
-
-  if(params.get("utm_source") === "qr"){
-    gtag('event', 'qr_visit', {
-      campaign: params.get("utm_campaign") || "unknown"
+  const p = new URLSearchParams(window.location.search);
+  if(p.get("utm_source")==="qr"){
+    gtag('event','qr_visit',{
+      campaign:p.get("utm_campaign")||"unknown"
     });
   }
 })();
@@ -146,48 +210,102 @@ function trackStore(platform, url){
 
 <header class="topbar">
   <div class="container topbar-inner">
+
     <div class="brand">
       <img src="assets/brand/fatha-f.png" width="26">
       Fatha Games
     </div>
+
+    <nav class="nav">
+      <a href="#games">Games</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
   </div>
 </header>
 
 <main class="container">
 
-  <section class="hero">
-    <img class="hero-logo" src="assets/brand/fatha-f.png">
-    <h1>Fatha Games</h1>
-    <p>We build games with a strong focus on feel, clarity, and execution.</p>
-  </section>
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-logo" src="assets/brand/fatha-f.png">
+  <h1>Fatha Games</h1>
+  <p>We build games with a strong focus on feel, clarity, and execution.</p>
+</section>
 
-  <section style="text-align:center; padding:40px 0;">
+<div class="divider">
+  <div class="divider-line"></div>
+  <img src="assets/brand/fatha-f.png" width="24">
+  <div class="divider-line"></div>
+</div>
 
-    <h2>Perfect Fit</h2>
+<!-- GAMES -->
+<section class="section" id="games">
+  <h2>Games</h2>
 
-    <div class="store-buttons">
+  <h3>Perfect Fit</h3>
+  <img class="game-logo" src="assets/games/perfect-fit/logo.png">
 
-      <!-- ANDROID -->
-      <a href="javascript:void(0)"
-         onclick="trackStore('android','https://play.google.com/store/apps/details?id=com.FathaGames.PerfectFit')">
-        <img src="assets/google-play.png">
-      </a>
+  <div class="store-buttons">
 
-      <!-- IOS -->
-      <a href="javascript:void(0)"
-         onclick="trackStore('ios','https://apps.apple.com/us/app/perfect-fit-puzzle/id6772202390')">
-        <img src="assets/app-store.png">
-      </a>
+    <a href="javascript:void(0)"
+       onclick="trackStore('android','https://play.google.com/store/apps/details?id=com.FathaGames.PerfectFit')">
+      <img src="assets/google-play.png">
+    </a>
 
-    </div>
+    <a href="javascript:void(0)"
+       onclick="trackStore('ios','https://apps.apple.com/us/app/perfect-fit-puzzle/id6772202390')">
+      <img src="assets/app-store.png">
+    </a>
 
-  </section>
+  </div>
+</section>
 
-</main>
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <h2>About</h2>
+  <div class="about-text">
+    Fatha Games was founded in 2026 with a focus on persistence, polish, and execution.
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <h2>Contact</h2>
+
+  <p>info@fathagames.com</p>
+
+  <div class="socials">
+
+    <a href="https://youtube.com/@fathagames" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M23.5 6.2..."/></svg>
+    </a>
+
+    <a href="https://instagram.com/fatha.games" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M7 2C4..."/></svg>
+    </a>
+
+    <a href="https://facebook.com/share/1Di7zF4rcD/" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M22 12..."/></svg>
+    </a>
+
+  </div>
+</section>
 
 <footer class="footer">
-  © 2026 Fatha Games
+  <div>© 2026 Fatha Games</div>
+  <div>
+    <a href="privacy.html">Privacy</a> •
+    <a href="terms.html">Terms</a>
+  </div>
 </footer>
+
+</main>
 
 </body>
 </html>
