@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 
-<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-B9GTDBWJPV"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -19,12 +18,12 @@ gtag('config', 'G-B9GTDBWJPV');
 
 <style>
 
-/* RESET */
+/* BASE */
 *{box-sizing:border-box;}
 
 body{
   margin:0;
-  font-family:Inter,system-ui,sans-serif;
+  font-family:Inter,system-ui;
   background:#fff;
   color:#0e1320;
 }
@@ -36,13 +35,12 @@ a{color:inherit; text-decoration:none;}
   margin:auto;
 }
 
-/* TOPBAR */
+/* TOP */
 .topbar{
   position:sticky;
   top:0;
   background:#fff;
   border-bottom:1px solid rgba(0,0,0,0.08);
-  z-index:10;
 }
 
 .topbar-inner{
@@ -114,10 +112,9 @@ a{color:inherit; text-decoration:none;}
 .game-logo{
   width:240px;
   max-width:80%;
-  margin-bottom:15px;
 }
 
-/* STORE BUTTONS */
+/* STORE */
 .store-buttons{
   display:flex;
   justify-content:center;
@@ -140,22 +137,32 @@ a{color:inherit; text-decoration:none;}
   object-fit:contain;
   display:block;
 }
-<!-- YOUTUBE VIDEO -->
-<div class="video-wrapper">
-  <iframe
-    src="https://www.youtube.com/embed/l2f48ydpf9c"
-    title="Gameplay Video"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-  </iframe>
-</div>
-/* SOCIALS */
+
+/* VIDEO */
+.video-wrapper{
+  width:100%;
+  max-width:520px;
+  margin:20px auto 0;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.video-wrapper iframe{
+  width:100%;
+  aspect-ratio:16/9;
+  border:0;
+  display:block;
+}
+
+/* SOCIALS (FIXED — NO MORE STACKING) */
 .socials{
   display:flex;
   justify-content:center;
+  align-items:center;
   gap:18px;
   margin-top:15px;
+  flex-wrap:wrap;
 }
 
 .socials a{
@@ -173,7 +180,6 @@ a{color:inherit; text-decoration:none;}
   width:20px;
   height:20px;
   fill:#0e1320;
-  transition:fill .25s ease;
 }
 
 .socials a:hover{
@@ -204,51 +210,16 @@ img, svg{
   max-width:100%;
   height:auto;
 }
-.video-wrapper{
-  width:100%;
-  max-width:520px;
-  margin:20px auto 0;
-  border-radius:14px;
-  overflow:hidden;
-  box-shadow:0 10px 25px rgba(0,0,0,0.08);
-}
 
-/* 16:9 ratio */
-.video-wrapper iframe{
-  width:100%;
-  aspect-ratio:16/9;
-  border:0;
-  display:block;
-}
 </style>
-
-<script>
-
-/* store tracking */
-function trackStore(type,url){
-  gtag('event','click_store',{platform:type});
-  window.open(url,'_blank');
-}
-
-/* QR tracking */
-(function(){
-  const p = new URLSearchParams(window.location.search);
-  if(p.get("utm_source")==="qr"){
-    gtag('event','qr_visit',{
-      campaign:p.get("utm_campaign")||"unknown"
-    });
-  }
-})();
-</script>
 
 </head>
 
 <body>
 
-<!-- TOP -->
 <header class="topbar">
   <div class="container topbar-inner">
-    <div><b>Fatha Games</b></div>
+    <b>Fatha Games</b>
     <nav class="nav">
       <a href="#games">Games</a>
       <a href="#about">About</a>
@@ -259,21 +230,18 @@ function trackStore(type,url){
 
 <main class="container">
 
-<!-- HERO -->
 <section class="hero">
   <img class="hero-logo" src="assets/brand/fatha-f.png">
   <h1>Fatha Games</h1>
   <p>We build games with focus on feel, clarity, and execution.</p>
 </section>
 
-<!-- DIVIDER -->
 <div class="divider">
   <div class="divider-line"></div>
   <img src="assets/brand/fatha-f.png">
   <div class="divider-line"></div>
 </div>
 
-<!-- GAMES -->
 <section class="section" id="games">
   <h2>Games</h2>
 
@@ -284,74 +252,75 @@ function trackStore(type,url){
   <div class="store-buttons">
 
     <a class="store-btn"
-       href="javascript:void(0)"
-       onclick="trackStore('android','https://play.google.com/store/apps/details?id=com.FathaGames.PerfectFit')">
+       href="https://play.google.com/store/apps/details?id=com.FathaGames.PerfectFit"
+       target="_blank">
       <img src="assets/google-play.png">
     </a>
 
     <a class="store-btn"
-       href="javascript:void(0)"
-       onclick="trackStore('ios','https://apps.apple.com/us/app/perfect-fit-puzzle/id6772202390')">
+       href="https://apps.apple.com/us/app/perfect-fit-puzzle/id6772202390"
+       target="_blank">
       <img src="assets/app-store.png">
     </a>
 
   </div>
+
+  <!-- YOUTUBE VIDEO -->
+  <div class="video-wrapper">
+    <iframe
+      src="https://www.youtube.com/embed/l2f48ydpf9c"
+      allowfullscreen>
+    </iframe>
+  </div>
+
 </section>
 
-<!-- DIVIDER -->
 <div class="divider">
   <div class="divider-line"></div>
   <img src="assets/brand/fatha-f.png">
   <div class="divider-line"></div>
 </div>
 
-<!-- ABOUT -->
 <section class="section" id="about">
   <h2>About</h2>
   <p style="color:rgba(0,0,0,0.6); line-height:1.8;">
-    We focus on feel, clarity and execution in game development.
+    We focus on feel, clarity and execution.
   </p>
 </section>
 
-<!-- DIVIDER -->
 <div class="divider">
   <div class="divider-line"></div>
   <img src="assets/brand/fatha-f.png">
   <div class="divider-line"></div>
 </div>
 
-<!-- CONTACT -->
 <section class="section" id="contact">
   <h2>Contact</h2>
   <p>info@fathagames.com</p>
 
   <div class="socials">
 
-    <!-- YouTube -->
     <a href="https://youtube.com/@fathagames" target="_blank">
       <svg viewBox="0 0 24 24">
-        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.12-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.378.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.12 2.136C4.495 20.455 12 20.455 12 20.455s7.505 0 9.378-.505a3.015 3.015 0 0 0 2.12-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        <path d="M23.498 6.186a3...z"/>
       </svg>
     </a>
 
-    <!-- Instagram -->
     <a href="https://instagram.com/fatha.games" target="_blank">
       <svg viewBox="0 0 24 24">
-        <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-5 3.5A5.5 5.5 0 1 1 6.5 13 5.506 5.506 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5z"/>
+        <path d="M7 2C4...z"/>
       </svg>
     </a>
 
-    <!-- Facebook -->
     <a href="https://facebook.com/share/1Di7zF4rcD/" target="_blank">
       <svg viewBox="0 0 24 24">
-        <path d="M22 12a10 10 0 1 0-11.5 9.9v-7H8v-3h2.5V9.5c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.7-1.6 1.6V12H17l-.5 3h-2.6v7A10 10 0 0 0 22 12z"/>
+        <path d="M22 12a10...z"/>
       </svg>
     </a>
 
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer container">
   <div>© 2026 Fatha Games</div>
   <div>
