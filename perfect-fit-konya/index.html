@@ -45,7 +45,7 @@ p{
 </style>
 
 <script>
-window.addEventListener('load', function() {
+window.onload = function () {
 
     const ua = navigator.userAgent || navigator.vendor || window.opera;
 
@@ -64,37 +64,35 @@ window.addEventListener('load', function() {
 
         title.innerText = "Perfect Fit Puzzle";
         subtitle.innerText = "Google Play'e yönlendiriliyorsunuz...";
-        
+
         store.style.display = "block";
         storeImg.src = "assets/google-play.png";
 
     } 
-    else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+    else if (/iPad|iPhone|iPod/.test(ua)) {
 
         platform = "ios";
         destination = "https://apps.apple.com/tr/app/perfect-fit-puzzle/id6772202390";
 
         title.innerText = "Perfect Fit Puzzle";
         subtitle.innerText = "App Store'a yönlendiriliyorsunuz...";
-        
+
         store.style.display = "block";
         storeImg.src = "assets/app-store.png";
 
     } 
     else {
 
-        platform = "desktop";
-        destination = "https://www.fathagames.com/#games";
-
         title.innerText = "Perfect Fit Puzzle";
         subtitle.innerText = "Fathagames'e yönlendiriliyorsunuz...";
+        destination = "https://www.fathagames.com/#games";
     }
 
-    setTimeout(function() {
+    setTimeout(() => {
         window.location.replace(destination);
-    }, 1000);
+    }, 1200);
 
-});
+};
 </script>
 
 </head>
