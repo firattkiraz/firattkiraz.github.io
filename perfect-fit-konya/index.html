@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Perfect Fit Puzzle - Mağazaya yönlendiriliyor...</title>
+
+<script>
+window.addEventListener('load', function() {
+
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+
+    let destination = "";
+    let platform = "desktop";
+
+    if (/android/i.test(ua)) {
+        platform = "android";
+        destination = "https://play.google.com/store/apps/details?id=com.FathaGames.PerfectFit";
+
+    } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+        platform = "ios";
+        destination = "https://apps.apple.com/tr/app/perfect-fit-puzzle/id6772202390";
+
+    } else {
+        platform = "desktop";
+        destination = "https://www.fathagames.com/#games";
+    }
+
+    // redirect
+    setTimeout(function() {
+        window.location.replace(destination);
+    }, 800);
+
+});
+</script>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:Arial,sans-serif;
+    color:#555;
+}
+</style>
+
+</head>
+<body>
+Perfect Fit Puzzle - Redirecting...
+</body>
+</html>
