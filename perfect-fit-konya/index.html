@@ -7,6 +7,43 @@
 
 <title>Perfect Fit Puzzle - Mağazaya yönlendiriliyor...</title>
 
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    font-family:Arial,sans-serif;
+    color:#555;
+    text-align:center;
+    gap:12px;
+}
+
+h2{
+    margin:0;
+    font-size:22px;
+    color:#111;
+}
+
+p{
+    margin:0;
+    font-size:15px;
+    opacity:0.7;
+}
+
+#store{
+    margin-top:15px;
+    display:none;
+}
+
+#store img{
+    width:160px;
+    height:auto;
+}
+</style>
+
 <script>
 window.addEventListener('load', function() {
 
@@ -15,41 +52,61 @@ window.addEventListener('load', function() {
     let destination = "";
     let platform = "desktop";
 
+    const title = document.getElementById("title");
+    const subtitle = document.getElementById("subtitle");
+    const store = document.getElementById("store");
+    const storeImg = document.getElementById("store-img");
+
     if (/android/i.test(ua)) {
+
         platform = "android";
         destination = "https://play.google.com/store/apps/details?id=com.FathaGames.PerfectFit";
 
-    } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+        title.innerText = "Perfect Fit Puzzle";
+        subtitle.innerText = "Google Play'e yönlendiriliyorsunuz...";
+        
+        store.style.display = "block";
+        storeImg.src = "assets/google-play.png";
+
+    } 
+    else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+
         platform = "ios";
         destination = "https://apps.apple.com/tr/app/perfect-fit-puzzle/id6772202390";
 
-    } else {
+        title.innerText = "Perfect Fit Puzzle";
+        subtitle.innerText = "App Store'a yönlendiriliyorsunuz...";
+        
+        store.style.display = "block";
+        storeImg.src = "assets/app-store.png";
+
+    } 
+    else {
+
         platform = "desktop";
         destination = "https://www.fathagames.com/#games";
+
+        title.innerText = "Perfect Fit Puzzle";
+        subtitle.innerText = "Fathagames'e yönlendiriliyorsunuz...";
     }
 
-    // redirect
     setTimeout(function() {
         window.location.replace(destination);
-    }, 800);
+    }, 1000);
 
 });
 </script>
 
-<style>
-body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-family:Arial,sans-serif;
-    color:#555;
-}
-</style>
-
 </head>
+
 <body>
-Perfect Fit Puzzle - Redirecting...
+
+<h2 id="title">Perfect Fit Puzzle - Redirecting...</h2>
+<p id="subtitle"></p>
+
+<div id="store">
+    <img id="store-img" src="">
+</div>
+
 </body>
 </html>
