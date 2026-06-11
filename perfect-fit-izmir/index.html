@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Perfect Fit Puzzle - Mağazaya yönlendiriliyor...</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    font-family:Arial,sans-serif;
+    color:#555;
+    text-align:center;
+    gap:10px;
+}
+
+h2{
+    margin:0;
+    font-size:22px;
+    color:#111;
+}
+
+p{
+    margin:0;
+    font-size:15px;
+    opacity:0.7;
+}
+</style>
+
+<script>
+window.addEventListener('load', function() {
+
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+
+    let destination = "";
+
+    const title = document.getElementById("title");
+    const subtitle = document.getElementById("subtitle");
+
+    if (/android/i.test(ua)) {
+
+        destination = "https://play.google.com/store/apps/details?id=com.FathaGames.PerfectFit";
+
+        title.innerText = "Perfect Fit Puzzle";
+        subtitle.innerText = "Google Play'e yönlendiriliyorsunuz...";
+
+    } 
+    else if (/iPad|iPhone|iPod/.test(ua)) {
+
+        destination = "https://apps.apple.com/tr/app/perfect-fit-puzzle/id6772202390";
+
+        title.innerText = "Perfect Fit Puzzle";
+        subtitle.innerText = "App Store'a yönlendiriliyorsunuz...";
+
+    } 
+    else {
+
+        destination = "https://www.fathagames.com/#games";
+
+        title.innerText = "Perfect Fit Puzzle";
+        subtitle.innerText = "Fathagames'e yönlendiriliyorsunuz...";
+    }
+
+    setTimeout(function() {
+        window.location.replace(destination);
+    }, 1000);
+
+});
+</script>
+
+</head>
+
+<body>
+
+<h2 id="title">Perfect Fit Puzzle</h2>
+<p id="subtitle">Yönlendiriliyor...</p>
+
+</body>
+</html>
