@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account & Data Deletion - Fatha Games</title>
+    <link rel="icon" type="image/png" href="assets/brand/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: Inter, system-ui, sans-serif;
+            background: #fff;
+            color: #0e1320;
+            padding: 50px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 580px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 24px;
+            color: rgba(0,0,0,0.5);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .back-link:hover { color: #0e1320; }
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 0 0 12px 0;
+        }
+        p {
+            color: rgba(0,0,0,0.65);
+            line-height: 1.6;
+            font-size: 15px;
+            margin: 0 0 20px 0;
+        }
+        .info-card {
+            background: rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(0,0,0,0.15);
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 14px;
+            background: #fff;
+            color: #0e1320;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: 2px solid #0e1320;
+        }
+        button {
+            width: 100%;
+            background: #0e1320;
+            color: #fff;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity .2s;
+        }
+        button:hover { opacity: 0.9; }
+        .footer-note {
+            margin-top: 24px;
+            text-align: center;
+            font-size: 13px;
+            color: rgba(0,0,0,0.4);
+        }
+        .footer-note a { color: inherit; text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="back-link">← Back to Home</a>
+    <h1>Delete Account & Data</h1>
+    <p>At Fatha Games, we respect your privacy. If you would like to delete all diagnostic, gameplay, or advertising data associated with your device, please fill out the request below.</p>
+
+    <div class="info-card">
+        <strong>What happens next?</strong><br>
+        Because our games do not require mandatory user accounts, data deletion pertains to your advertising IDs (IDFA/GAID) and analytics records. All associated logs are permanently purged within 30 days.
+    </div>
+
+    <form action="mailto:info@fathagames.com" method="post" enctype="text/plain">
+        <div class="form-group">
+            <label for="game">Select Game</label>
+            <select id="game" name="Game" required>
+                <option value="Perfect Fit">Perfect Fit</option>
+                <option value="Basket Match">Basket Match</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Contact Email</label>
+            <input type="email" id="email" name="Email" placeholder="yourname@example.com" required>
+        </div>
+
+        <div class="form-group">
+            <label for="details">Player / Device Identifier (Optional)</label>
+            <input type="text" id="details" name="Identifier" placeholder="Game Center nickname or Device Model">
+        </div>
+
+        <div class="form-group">
+            <label for="reason">Request Details</label>
+            <textarea id="reason" name="Details" rows="4" placeholder="I request the permanent deletion of my gameplay and diagnostic data." required></textarea>
+        </div>
+
+        <button type="submit">Submit Deletion Request</button>
+    </form>
+
+    <div class="footer-note">
+        You can also email us directly at <a href="mailto:info@fathagames.com">info@fathagames.com</a>.
+    </div>
+</div>
+
+</body>
+</html>
