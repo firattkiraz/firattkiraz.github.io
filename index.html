@@ -91,15 +91,20 @@ a{text-decoration:none; color:inherit;}
 .section h2{font-size:38px; margin-bottom:25px;}
 
 /* GAME */
-.game-logo{width:240px; max-width:80%;}
+.game-logo{
+  width:240px; 
+  max-width:80%;
+  border-radius:24px; /* İkon köşeleri için yumuşatma */
+}
 
 /* STORE */
 .store-buttons{
   display:flex;
   justify-content:center;
-  gap:22px; /* 🔥 increased spacing */
+  gap:22px;
   flex-wrap:wrap;
-  margin-bottom:35px; /* 🔥 extra space before video */
+  margin-top:25px;
+  margin-bottom:35px;
 }
 
 .store-btn{
@@ -119,18 +124,18 @@ a{text-decoration:none; color:inherit;}
 /* YOUTUBE PHONE STYLE CARD */
 .video-wrapper{
   width:100%;
-  max-width:380px; /* phone feel */
+  max-width:380px;
   margin:0 auto;
   border-radius:28px;
   overflow:hidden;
   box-shadow:0 18px 40px rgba(0,0,0,0.15);
-  border:6px solid #111; /* phone frame */
+  border:6px solid #111;
   background:#000;
 }
 
 .video-wrapper iframe{
   width:100%;
-  aspect-ratio:9/16; /* SHORTS phone style */
+  aspect-ratio:9/16;
   border:0;
 }
 
@@ -204,7 +209,7 @@ img,svg{max-width:100%; height:auto;}
   <div class="divider-line"></div>
 </div>
 
-<!-- GAME -->
+<!-- GAME 1: PERFECT FIT -->
 <section class="section">
 
   <h2>Perfect Fit</h2>
@@ -228,6 +233,41 @@ img,svg{max-width:100%; height:auto;}
   <div class="video-wrapper">
     <iframe src="https://www.youtube.com/embed/l2f48ydpf9c" allowfullscreen></iframe>
   </div>
+
+</section>
+
+<div class="divider">
+  <div class="divider-line"></div>
+  <img src="assets/brand/fatha-f.png">
+  <div class="divider-line"></div>
+</div>
+
+<!-- GAME 2: BASKET MATCH! -->
+<section class="section">
+
+  <h2>Basket Match!</h2>
+
+  <img class="game-logo" src="assets/basketmatch_icon_1024.png" alt="Basket Match! Logo">
+
+  <!-- STORE -->
+  <div class="store-buttons">
+
+    <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.FathaGames.PerfectFit">
+      <img src="assets/google-play.png">
+    </a>
+
+    <a class="store-btn" href="https://apps.apple.com/us/app/perfect-fit-puzzle/id6772202390">
+      <img src="assets/app-store.png">
+    </a>
+
+  </div>
+
+  <!-- VIDEO (İleride eklemek isterseniz yorum satırını kaldırabilirsiniz) -->
+  <!--
+  <div class="video-wrapper">
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+  </div>
+  -->
 
 </section>
 
